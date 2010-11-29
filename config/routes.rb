@@ -21,7 +21,7 @@ ActionController::Routing::Routes.draw do |map|
   map.with_options(:conditions => {:subdomain => "admin"}) do |subdom|
     subdom.root :controller => 'site_admin/admin', :action => 'index'
     subdom.with_options(:namespace => 'site_admin/', :name_prefix => 'admin_', :path_prefix => nil) do |admin|
-      admin.resources :admin, :member => { :charge => :post }
+      #admin.resources :admin, :member => { :charge => :post }
     end
   end
   
