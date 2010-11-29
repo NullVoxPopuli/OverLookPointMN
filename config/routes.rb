@@ -18,12 +18,12 @@ ActionController::Routing::Routes.draw do |map|
   #     # Directs /admin/products/* to Admin::ProductsController (app/controllers/admin/products_controller.rb)
   #     admin.resources :products
   #   end
-  map.with_options(:conditions => {:subdomain => "admin"}) do |subdom|
-    subdom.root :controller => 'site_admin/admin', :action => 'index'
-    subdom.with_options(:namespace => 'site_admin/', :name_prefix => 'admin_', :path_prefix => nil) do |admin|
+  #map.with_options(:conditions => {:subdomain => "admin"}) do |subdom|
+  #  subdom.root :controller => 'site_admin/admin', :action => 'index'
+  #  subdom.with_options(:namespace => 'site_admin/', :name_prefix => 'admin_', :path_prefix => nil) do |admin|
       #admin.resources :admin, :member => { :charge => :post }
-    end
-  end
+  #  end
+  #end
   
   map.root :controller => "info", :action => "home"
   map.connect "/home", :controller => "info", :action => "home"
