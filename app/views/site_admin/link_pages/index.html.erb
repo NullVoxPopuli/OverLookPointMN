@@ -1,0 +1,26 @@
+<h1>Customize what links are visible</h1>
+
+<h1>Listing link_pages</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Content</th>
+	<th>Visible?</th>
+  </tr>
+
+<% @link_pages.each do |link_page| %>
+  <tr>
+    <td><%=h link_page.name %></td>
+    <td><%=h link_page.content %></td>
+	<td><%=h link_page.visible %></td>
+    <td><%= link_to 'Show', link_page %></td>
+    <td><%= link_to 'Edit', edit_link_page_path(link_page) %></td>
+    <td><%= link_to 'Destroy', link_page, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New link_page', new_link_page_path %>

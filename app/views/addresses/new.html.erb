@@ -1,0 +1,10 @@
+<h1>New Address</h1>
+
+<% form_for(:address, @address, :method => :post, 
+			:url => {:user_id => current_user.id,
+					:controller => :addresses,
+					:action => :create}) do |f| -%>
+  <%= f.error_messages %>
+  <%= render :partial => "form", :object => f %>
+  <%= f.submit "Add Address" %>
+<% end %>

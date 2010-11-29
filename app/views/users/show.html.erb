@@ -1,0 +1,62 @@
+<div class="information">
+  <h2>Basic Information</h2>
+  <p>
+    <b>Real Name:</b>
+    <%=h @user.real_name %>
+  </p>
+  <p>
+    <b>Login:</b>
+    <%=h @user.login %>
+  </p>
+  <p>
+    <b>Email:</b>
+    <%=h @user.email %>
+  </p>
+  <p>
+    <b>Phone Number:</b>
+    <%=h @user.phone_number %>
+  </p>
+
+  <%= link_to 'Edit Information', edit_account_path %>
+</div>
+<div class="addresses">
+  <h2>Addresses</h2>
+  <p>
+    <% if @addresses %>
+    	<% @addresses.each do |a| %>
+    		<%=h a.address_parts.join(", ") %> <br />
+    	<% end %>
+    <% end %>
+  </p>
+  <%= link_to "Add Address", :controller => :addresses, :action => :new, :user_id => current_user.id %>
+
+</div>
+
+<div class="services">
+  <h2>Services you offer</h2>
+  <p>
+    <% if @services %>
+      <% @services.each do |s| %>
+        <div class="service_name">
+          <%=h s.name %>
+        </div>
+        <div class="service_description">
+          <%=h s.description %>
+        </div>
+      
+      <% end %>
+    <% end %>
+    <br /> <Br />
+    <% if (Service.all - @user.services).size > 0 %>
+      <% form_tag({:controller => :users,
+                       :action => :add_service_to_user,
+                       :user_id => @user.id }) do |f| %>
+        Add a Service
+        <%= select_tag(:services, options_from_collection_for_select(Service.all - @user.services, :id, :name))%>
+        <%= submit_tag "Add" %>
+      <% end %>
+    <% end %>
+
+  </p>
+  
+</div>

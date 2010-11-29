@@ -1,0 +1,16 @@
+<div class="users">
+	login | real name | phone number<br>
+<% @users.each do |u| %>
+	<%= u.login %> | <%= u.real_name %> | <%= u.phone_number %>
+	<br>
+<% end %>
+<%= link_to "Add User", new_user_path %>
+</div>
+
+<div class="services">
+<% @services.each do |s| %>
+	<%= s.name %> <%= link_to "Remove / Delete", [s], :confirm => "Are you sure? It'll be gone forever.", :method => :delete %>
+	<br>
+<% end %>
+<%= link_to "Add Service", new_service_path %>
+</div>

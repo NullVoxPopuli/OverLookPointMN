@@ -1,0 +1,21 @@
+<ul class="log_in_and_out">
+	
+	<% if !current_user %>
+		<li class="register_new_user">
+			<%= link_to "Register", new_user_path %>
+		</li>
+		<li class="login_existing_user">
+			<%= link_to "Log In", new_user_session_path %>
+		</li>
+		<li class="forgot_password_reset">
+			<%= link_to "Forgot Password", new_password_reset_path %>
+		</li>
+	<% else %>
+		<li class="logout">
+			<%= link_to "Log Out", user_session_path, :method => :delete %>
+		</li>
+		<li class="settings">
+			<%= link_to "Profile", user_path(current_user) %>
+		</li>
+	<% end %>
+</ul>

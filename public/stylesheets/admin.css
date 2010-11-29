@@ -1,0 +1,17 @@
+body{
+	width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.users, .services {
+	margin: 10px;
+	padding: 10px;
+	border: 1px solid black;
+}
+
+.users  {
+	float: left;
+}
+.services {
+	float: right;
+}
