@@ -1,0 +1,6 @@
+gem 'activesupport'
+gem 'activerecord'
+gem 'authlogic'
+gem 'addresslogic'
+gem 'searchlogic'
+gem 'subdomain-fu'
