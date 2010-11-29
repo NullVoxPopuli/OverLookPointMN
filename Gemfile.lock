@@ -1,0 +1,38 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    actionmailer (2.3.8)
+      actionpack (= 2.3.8)
+    actionpack (2.3.8)
+      activesupport (= 2.3.8)
+      rack (~> 1.1.0)
+    activerecord (2.3.8)
+      activesupport (= 2.3.8)
+    activeresource (2.3.8)
+      activesupport (= 2.3.8)
+    activesupport (2.3.8)
+    addresslogic (1.2.1)
+    authlogic (2.1.6)
+      activesupport
+    rack (1.1.0)
+    rails (2.3.8)
+      actionmailer (= 2.3.8)
+      actionpack (= 2.3.8)
+      activerecord (= 2.3.8)
+      activeresource (= 2.3.8)
+      activesupport (= 2.3.8)
+      rake (>= 0.8.3)
+    rake (0.8.7)
+    searchlogic (2.4.19)
+      activerecord (>= 2.0.0)
+    subdomain-fu (0.5.4)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  addresslogic (= 1.2.1)
+  authlogic (= 2.1.6)
+  rails (= 2.3.8)
+  searchlogic (= 2.4.19)
+  subdomain-fu (= 0.5.4)
