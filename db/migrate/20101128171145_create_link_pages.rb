@@ -4,6 +4,7 @@ class CreateLinkPages < ActiveRecord::Migration
       t.string :name
       t.string :content
       t.boolean :visible
+      t.boolean :is_link
 
       t.timestamps
     end

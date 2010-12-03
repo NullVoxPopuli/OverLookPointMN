@@ -1,33 +1,41 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :link_pages
 
-  map.resources :link_pages
 
+  map.namespace "admin" do |admin|
+    admin.root :controller => :site_prefs, :action => :index
+    admin.resources :site_prefs
+    admin.resources :link_pages
+    admin.resources :menu_bars
+
+
+  end
+ 
   map.resources :services
 
-  # The priority is based upon order of creation: first created -> highest priority.
+  
+  # map.with_options(:conditions => {:subdomain => 'admin'}) do |subdom|
+  #   subdom.root :controller => 'site_admin/admin', :action => 'index'
+  #   subdom.with_options(:namespace => 'site_admin/', :name_prefix => 'admin_', :path_prefix => nil) do |admin|
+  #     admin.resources :admin
+  #     admin.resources :link_pages
+  #   end
+  # end
+  
+  # match '/' => 'site_admin/admin#index', :constraints => {:subdomain => "admin"}
+
+  map.root :controller => "info", :action => "home"
+  
+  map.connect "/home", :controller => "info", :action => "home"
+  map.connect "/register", :controller => :users, :action => :new
+  
   
   map.resource :user_session
   map.resource :account, :controller => "users"
   map.resources :password_resets
   map.resources :users
   map.resources :addresses
-  
-  # Sample resource route within a namespace:
-  #   map.namespace :admin do |admin|
-  #     # Directs /admin/products/* to Admin::ProductsController (app/controllers/admin/products_controller.rb)
-  #     admin.resources :products
-  #   end
-  #map.with_options(:conditions => {:subdomain => "admin"}) do |subdom|
-  #  subdom.root :controller => 'site_admin/admin', :action => 'index'
-  #  subdom.with_options(:namespace => 'site_admin/', :name_prefix => 'admin_', :path_prefix => nil) do |admin|
-      #admin.resources :admin, :member => { :charge => :post }
-  #  end
-  #end
-  
-  map.root :controller => "info", :action => "home"
-  map.connect "/home", :controller => "info", :action => "home"
-  map.connect "/register", :controller => :users, :action => :new
+
+
   #map.connect "/admin", :controller => admin, :action => :show
   
   # Sample of regular route:

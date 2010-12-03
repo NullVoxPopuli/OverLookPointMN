@@ -1,0 +1,22 @@
+<p>
+  <b>Name:</b>
+  <%=h @link_page.name %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%=h @link_page.content %>
+</p>
+
+<p>
+  <b>Visible:</b>
+  <%=h @link_page.visible %>
+</p>
+<p>
+  <b>Is this a link? (as opposed to an on-site page):</b>
+  <%=h @link_page.is_link %>
+</p>
+
+
+<%= link_to 'Edit', edit_admin_link_page_path(@link_page) %> |
+<%= link_to 'Back', admin_link_pages_path %>

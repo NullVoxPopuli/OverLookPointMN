@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101125200458) do
+ActiveRecord::Schema.define(:version => 20101201185101) do
 
   create_table "addresses", :force => true do |t|
     t.string  "number"
@@ -18,6 +18,27 @@ ActiveRecord::Schema.define(:version => 20101125200458) do
     t.string  "state"
     t.string  "zip_code"
     t.integer "user_id"
+  end
+
+  create_table "link_pages", :force => true do |t|
+    t.string   "name"
+    t.string   "content"
+    t.boolean  "visible"
+    t.boolean  "is_link"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "link_pages_menu_bars", :id => false, :force => true do |t|
+    t.integer "menu_bar_id"
+    t.integer "link_page_id"
+    t.integer "order"
+  end
+
+  create_table "menu_bars", :force => true do |t|
+    t.boolean  "is_horizontal"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "services", :force => true do |t|

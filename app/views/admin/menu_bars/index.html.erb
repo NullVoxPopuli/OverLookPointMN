@@ -1,0 +1,20 @@
+<h1>Listing menu_bars</h1>
+
+<table>
+  <tr>
+    <th>Is this menu horizontal</th>
+  </tr>
+
+<% @menu_bars.each do |menu_bar| %>
+  <tr>
+    <td><%=h menu_bar.is_horizontal %></td>
+    <td><%= link_to 'Show', admin_menu_bar_path(menu_bar.id) %></td>
+    <td><%= link_to 'Edit', edit_admin_menu_bar_path(menu_bar) %></td>
+    <td><%= link_to 'Destroy', admin_menu_bar_path(menu_bar.id), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New menu_bar', new_admin_menu_bar_path %>

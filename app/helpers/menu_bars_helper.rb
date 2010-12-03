@@ -1,0 +1,2 @@
+module MenuBarsHelper
+end

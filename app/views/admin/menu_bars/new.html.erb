@@ -1,0 +1,15 @@
+<h1>New menu_bar</h1>
+
+<% form_for([:admin, @menu_bar]) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :is_horizontal %><br />
+    <%= f.check_box :is_horizontal %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', admin_menu_bars_path %>
