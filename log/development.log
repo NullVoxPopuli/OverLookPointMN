@@ -53160,3 +53160,20 @@ Rendered shared_elements/_menu_bar_item (0.7ms)
 Rendered shared_elements/_menu_bar_item (0.1ms)
 Rendered shared_elements/_side_nav (4.6ms)
 Completed in 117ms (View: 114, DB: 2) | 200 OK [http://example.com/]
+
+
+Processing InfoController#home (for 127.0.0.1 at 2010-12-23 18:09:34) [GET]
+  Parameters: {"action"=>"home", "controller"=>"info"}
+Rendering template within layouts/application
+Rendering info/home
+Rendered shared_elements/_login_register (62.0ms)
+  [4;36;1mMenuBar Load (0.2ms)[0m   [0;1mSELECT * FROM "menu_bars" WHERE ("menu_bars"."is_horizontal" = 't') LIMIT 1[0m
+  [4;35;1mLinkPage Load (0.3ms)[0m   [0mSELECT * FROM "link_pages" INNER JOIN "link_pages_menu_bars" ON "link_pages".id = "link_pages_menu_bars".link_page_id WHERE ("link_pages_menu_bars".menu_bar_id = 1 ) [0m
+Rendered shared_elements/_menu_bar_item (2.2ms)
+Rendered shared_elements/_menu_bar_item (0.6ms)
+Rendered shared_elements/_menu_bar_item (0.1ms)
+Rendered shared_elements/_menu_bar_item (0.6ms)
+Rendered shared_elements/_menu_bar_item (0.6ms)
+Rendered shared_elements/_navigation (26.8ms)
+Rendered shared_elements/_side_nav (0.7ms)
+Completed in 192ms (View: 190, DB: 1) | 200 OK [http://example.com/]

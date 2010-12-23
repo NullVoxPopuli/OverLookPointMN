@@ -27,14 +27,7 @@
 			
 			<div class="user_status_container">
 				<%= render :partial => "shared_elements/login_register"%>
-				<!-- This based on last_request_at, 
-          if they were active < 10 minutes they are logged in -->
-				<!--
-				<div class="number_of_users_logged_in">
-					<%= pluralize User.logged_in.count, "user" %> currently logged in
 
-				</div>
-				-->
 				
 				<% if current_user %>
   				<div class="find_a_service search">
