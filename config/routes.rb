@@ -6,8 +6,6 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :site_prefs
     admin.resources :link_pages
     admin.resources :menu_bars
-
-
   end
  
   map.resources :services

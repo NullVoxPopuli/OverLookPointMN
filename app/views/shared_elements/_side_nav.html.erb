@@ -1,8 +1,18 @@
 <% if current_user %>
   <ul class="side_nav">
-    <li><%= link_to "Calendar", :controller => :info, :action => :calendar %></li>
+  
+    <% vertical_menu_bar.link_pages.each do |page| %>
+      <%= render :partial => "/shared_elements/menu_bar_item", :locals => {:page => page} %>
+    <% end %>
+  <!--  <li><%= link_to "Calendar", :controller => :info, :action => :calendar %></li>
     <li>Holiday Lights Contest</li>
     <li>Real Estate Agents</li>
     <li>extras</li>
+  -->
+  
+  
+  
   </ul>
+  
+  
 <% end %>

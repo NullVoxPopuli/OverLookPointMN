@@ -1,0 +1,17 @@
+<% if page.visible? %>
+  <li>
+    <% if not page.is_link? %>
+    <%= link_to_remote page.name, 
+                  {
+                    :url => { 
+                             :controller => "admin/link_pages",
+                             :action => "load_page",
+                             :id => page.id
+                             }
+                  }
+                   %>
+    <% else %>
+      <a href="<%=h page.content %>"><%=h page.name %></a>
+    <% end %>
+  </li>
+<% end %>

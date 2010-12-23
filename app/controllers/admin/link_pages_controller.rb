@@ -82,4 +82,16 @@ class Admin::LinkPagesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def load_page
+    @page = LinkPage.find(params[:id])
+    
+    respond_to do |format|
+      format.js do
+        render :update do |p|
+          p.replace_html("actual_content", :partial => "/shared_elements/local_page", :object => @page)
+        end
+      end
+    end
+  end
 end

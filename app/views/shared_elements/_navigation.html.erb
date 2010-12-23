@@ -1,4 +1,12 @@
 <div class="navigation_container">
+  <ul class="navigation">
+    <% horizontal_menu_bar.link_pages.each do |page| %>
+      <%= render :partial => "/shared_elements/menu_bar_item", :locals => {:page => page} %>
+    <% end %>
+  </ul>
+</div>
+<!--
+<div class="navigation_container">
 	<ul class="navigation">
 		<li><%= link_to "Home", :controller => :info, :action => :home %></li>
 		<li><%= link_to "Map", :controller => :info, :action => :map %></li>
@@ -7,3 +15,4 @@
 		<li>Contacts</li>
 	</ul>
 </div>
+-->

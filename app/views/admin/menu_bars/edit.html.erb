@@ -5,7 +5,12 @@
   });
 </script>
 
+<style>
+  a{
+    text-decoration: none;
+  }
 
+</style>
 <h1>Editing menu_bar</h1>
 
 <% form_for([:admin, @menu_bar]) do |f| %>
@@ -15,23 +20,64 @@
     <%= f.label :is_horizontal %><br />
     <%= f.check_box :is_horizontal %>
   </p>
- 
- <h2>Pick and sort what pages will be in this menu bar</h2>
-
-  <ul id="sortable">  
-      <% @link_pages.each do |lp| %>
-            <li class="ui-state-default">
-              <span class="ui-icon ui-icon-arrowthick-2-n-s"></span>
-              <%= lp.name %>
-            </li>
-      <% end %>
-  </ul>
- 
-  <p>
+  
+    <p>
     <%= f.submit 'Update' %>
   </p>
 <% end %>
 
+ 
+ <h2>Pick and sort what pages will be in this menu bar</h2>
+<table border=1>
+  <tr>
+    <td>Available pages:</td>
+    <td width=700>What is currently in this menu: 
+</td>
+  </tr>
+    <td>
+      <% if @link_pages %>
+        <% @link_pages.each do |page| %>
+            <%= page.name %> | <%= link_to "add", 
+                  :controller => "admin/menu_bars", 
+                   :action => "add_page_to_menu", 
+                   :id => @menu_bar.id,
+                   :page => page.id  %><br />
+        <% end %>
+      <% end %>
+    </td>
+    <td>
+      <ol id="sortable">  
+          <% @menu_bar.link_pages.each do |lp| %>
+                <li class="ui-state-default">
+                  <span class="ui-icon ui-icon-arrowthick-2-n-s"></span>
+                  <%= link_to "v", 
+                         :controller => "admin/menu_bars",
+                         :action => :move_page_down,
+                         :page => lp.id,
+                         :id => @menu_bar.id %>
+                  <%= link_to "^", 
+                         :controller => "admin/menu_bars",
+                         :action => :move_page_up,
+                         :page => lp.id,
+                         :menu => @menu_bar.id %>
+                   | <%= lp.name %> | 
+                  <%= link_to "remove",
+                         :controller => "admin/menu_bars",
+                         :action => :remove_page_from_menu,
+                         :page => lp.id,
+                         :id => @menu_bar.id %>
+                </li>
+          <% end %>
+      </ol>
+ 
+
+    </td>
+  </tr>
+</table>
+
+<br />
+
+<br />
 
 <%= link_to 'Show', [:admin, @menu_bar] %> |
 <%= link_to 'Back', admin_menu_bars_path %>

@@ -76,7 +76,11 @@
       </div>
     <% end %>
     <div class="menu_empty"> 
-     <%= if m.link_pages.size < 1 then link_to("this bar currently has no pages", edit_admin_menu_bar_path(m)) end %>
+     <% if m.link_pages.size < 1 %>
+        <%= link_to("this bar currently has no pages", edit_admin_menu_bar_path(m)) %>
+      <% else %>
+        <%= link_to("edit this bar", edit_admin_menu_bar_path(m)) %>
+     <% end %>
     </div>
     </P>
   <% end %>

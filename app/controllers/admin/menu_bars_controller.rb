@@ -81,4 +81,49 @@ class Admin::MenuBarsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def add_page_to_menu
+    @menu_bar = MenuBar.find(params[:id])
+    @page = LinkPage.find(params[:page])
+    
+    @menu_bar.link_pages << @page
+    
+    respond_to do |format|
+      if @menu_bar.save
+        @link_pages = LinkPage.all
+        format.html { render :action => "edit" }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @menu_bar.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+  
+  def move_page_down
+    @menu_bar = MenBar.find(params[:id])
+    page = LinkPage.find(params[:page])
+    
+    
+  end
+  
+  def move_page_up
+    
+  end
+  
+  def remove_page_from_menu
+    @menu_bar = MenuBar.find(params[:id])
+    page = LinkPage.find(params[:page])
+    
+    @menu_bar.link_pages.delete(page)
+    
+    respond_to do |format|
+      if @menu_bar.save
+        @link_pages = LinkPage.all
+        format.html { render :action => "edit" }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @menu_bar.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
 end
