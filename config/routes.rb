@@ -6,10 +6,9 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :site_prefs
     admin.resources :link_pages
     admin.resources :menu_bars
+    admin.resources :services
   end
  
-  map.resources :services
-
   
   # map.with_options(:conditions => {:subdomain => 'admin'}) do |subdom|
   #   subdom.root :controller => 'site_admin/admin', :action => 'index'

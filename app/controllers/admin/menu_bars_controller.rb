@@ -100,13 +100,22 @@ class Admin::MenuBarsController < ApplicationController
   end
   
   def move_page_down
-    @menu_bar = MenBar.find(params[:id])
+    @menu_bar = MenuBar.find(params[:id])
     page = LinkPage.find(params[:page])
     
+    menu_link_relation = @menu_bar.link_pages(page)
+    
+    menu_link_relation.order = menu_link_relation.order + 1
     
   end
   
   def move_page_up
+    @menu_bar = MenuBar.find(params[:id])
+    page = LinkPage.find(params[:page])
+    
+    menu_link_relation = @menu_bar.link_pages(page)
+    
+    menu_link_relation.order = menu_link_relation.order - 1
     
   end
   

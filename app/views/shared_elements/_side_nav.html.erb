@@ -1,8 +1,9 @@
 <% if current_user %>
   <ul class="side_nav">
-  
-    <% vertical_menu_bar.link_pages.each do |page| %>
-      <%= render :partial => "/shared_elements/menu_bar_item", :locals => {:page => page} %>
+    <% if vertical_menu_bar %>
+      <% vertical_menu_bar.link_pages.each do |page| %>
+        <%= render :partial => "/shared_elements/menu_bar_item", :locals => {:page => page} %>
+      <% end %>
     <% end %>
   <!--  <li><%= link_to "Calendar", :controller => :info, :action => :calendar %></li>
     <li>Holiday Lights Contest</li>

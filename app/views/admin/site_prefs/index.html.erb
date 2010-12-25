@@ -34,16 +34,16 @@
           <%= s.name %> 
         </td>
         <td>
-                <%= link_to "Remove / Delete", [s], :confirm => "Are you sure? It'll be gone forever.", :method => :delete %>
+                <%= link_to "Remove / Delete", [:admin, s], :confirm => "Are you sure? It'll be gone forever.", :method => :delete %>
         </td>
       </tr>
       
     <% end %>
   </table>
 
-<%= link_to "Add Service", new_service_path %>
+<%= link_to "Add Service", new_admin_service_path %>
 </div>
-
+n
 <div class="pages">
   Pages
   <table>
@@ -58,6 +58,7 @@
         <td><%=h link_to p.name, edit_admin_link_page_path(p.id) %> </td>
         <td><%=h p.content.length > 300 ? "Content is too large to show" : p.content %> </td>
         <td><%= p.visible %></td>
+        <td><%= p.is_link? %></td>
       </tr>
     <% end %>
   </table>
@@ -66,7 +67,7 @@
 </div>
 
 <div class="menus">
-  These are what will display the pages (the menues). You can only have one vertical, and one horizontal nav bar
+  These are what will display the pages (the menus). <br>You can only have one vertical, and one horizontal nav bar
   <% @menus.each do |m| %>
     <P>
     <%= m.is_horizontal ? "This is your horizontal Nav bar" : "This is your vertical nav bar (for when people are already logged in)"%>
