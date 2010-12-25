@@ -11,7 +11,7 @@
     <td><%=h service.name %></td>
     <td><%=h service.description %></td>
     <td><%= link_to 'Show', service %></td>
-    <td><%= link_to 'Edit', edit_service_path(service) %></td>
+    <td><%= link_to 'Edit', edit_admin_service_path(service) %></td>
     <td><%= link_to 'Destroy', service, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
@@ -19,4 +19,4 @@
 
 <br />
 
-<%= link_to 'New service', new_service_path %>
+<%= link_to 'New service', new_admin_service_path %>
