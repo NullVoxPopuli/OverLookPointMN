@@ -1,21 +1,20 @@
-<% if @services %>
-  <% @services.each do |s| %>
+<% if @service %>
     <div class="service_container">
       <div class="service_info">
         <div class="service_name">
-          <%=h s.name %>
+          <%=h @service.name %>
         </div>
         <div class="service_description">
-          <%=h s.description %>
+          <%=h @service.description %>
         </div>
       
         <div class="people_that_have_this_service">
-          <% if s.users.size < 1 %>
+          <% if @service.users.size < 1 %>
             <div class="user">
               nobody is currently offering this service.
             </div>
           <% else %>
-            <% s.users.each do |u| %>
+            <% @service.users.each do |u| %>
               <div class="user">
                   <%=h u.login %>
                   <%=h "(" + u.real_name + ")" if u.real_name %>
@@ -27,5 +26,6 @@
         
       </div>
     </div>
-  <% end %>
+<% else %>
+   There are no people that offer that service.
 <% end %>

@@ -38,6 +38,15 @@
         
             <% end %>
   				</div>
+  				
+  				<%= observe_field :services,
+                :frequency=>0.5,
+                :update=>'users',
+                :url=>{
+                  :controller => :services,
+                  :action=>'single_service_search',
+                  :only_path=>false},
+                :with=>"'search='+encodeURIComponent(value)" %>
 				<% end %> 
 				
 			</div>
