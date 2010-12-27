@@ -47,7 +47,7 @@ class Admin::MenuBarsController < BaseController
 
     respond_to do |format|
       if @menu_bar.save
-        format.html { redirect_to([:admin, @menu_bar], :notice => 'MenuBar was successfully created.') }
+        format.html { redirect_to(:controller => :site_prefs, :action => :index, :notice => 'MenuBar was successfully created.') }
         format.xml  { render :xml => @menu_bar, :status => :created, :location => @menu_bar }
       else
         format.html { render :action => "new" }
@@ -63,7 +63,7 @@ class Admin::MenuBarsController < BaseController
 
     respond_to do |format|
       if @menu_bar.update_attributes(params[:menu_bar])
-        format.html { redirect_to(@menu_bar, :notice => 'MenuBar was successfully updated.') }
+        format.html { redirect_to([:controller => :site_prefs, :action => :index], :notice => 'MenuBar was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -76,10 +76,17 @@ class Admin::MenuBarsController < BaseController
   # DELETE /menu_bars/1.xml
   def destroy
     @menu_bar = MenuBar.find(params[:id])
+    
+    @menu_bar.link_pages.each do |lp|
+      lp.sequence = LinkPage::NOT_USED
+      @menu_bar.link_pages.delete(lp)
+      lp.save
+    end
+    
     @menu_bar.destroy
 
     respond_to do |format|
-      format.html { redirect_to(:controller => "admin/menu_bars", :action => :index) }
+      format.html { redirect_to(:controller => "admin/site_prefs", :action => :index) }
       format.xml  { head :ok }
     end
   end

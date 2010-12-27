@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     end
     
     if ip_is_blocked
-      redirect_to(:controller => :errors, :action => :ip_blocked, :id => 0)
+      redirect_to(:controller => :errors, :action => :ip_blocked)
     end
   end
   

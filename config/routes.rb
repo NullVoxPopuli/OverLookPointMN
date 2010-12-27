@@ -2,6 +2,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :services
   map.resources :base
+  map.connect '/errors/:action', :controller => "errors" 
   map.resources :errors
 
 

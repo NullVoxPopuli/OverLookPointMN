@@ -47,7 +47,7 @@ class Admin::LinkPagesController < BaseController
     respond_to do |format|
       if @link_page.save
         flash[:notice] = 'LinkPage was successfully created.'
-        format.html { redirect_to([:admin, @link_page]) }
+        format.html { redirect_to(:controller => :site_prefs, :action => :index) }
         format.xml  { render :xml => @link_page, :status => :created, :location => @link_page }
       else
         format.html { render :action => "new" }
@@ -64,7 +64,7 @@ class Admin::LinkPagesController < BaseController
     respond_to do |format|
       if @link_page.update_attributes(params[:link_page])
         flash[:notice] = 'LinkPage was successfully updated.'
-        format.html { redirect_to(@link_page) }
+        format.html { redirect_to(:controller => :site_prefs, :action => :index) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -80,7 +80,7 @@ class Admin::LinkPagesController < BaseController
     @link_page.destroy
 
     respond_to do |format|
-      format.html { redirect_to(:controller => "admin/link_pages", :action => :index) }
+      format.html { redirect_to(:controller => :site_prefs, :action => :index) }
       format.xml  { head :ok }
     end
   end
