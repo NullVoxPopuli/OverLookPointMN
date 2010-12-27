@@ -1,6 +1,6 @@
 class AddSequenceToLinkPages < ActiveRecord::Migration
   def self.up
-    #add_column :link_pages, :sequence, :integer
+    add_column :link_pages, :sequence, :integer
     
     LinkPage.all.each do |lp|
       lp.sequence = LinkPage::NOT_USED
