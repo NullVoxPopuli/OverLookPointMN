@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101227015625) do
+ActiveRecord::Schema.define(:version => 20101227100655) do
 
   create_table "addresses", :force => true do |t|
     t.string  "number"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(:version => 20101227015625) do
 
   create_table "link_pages", :force => true do |t|
     t.string   "name"
-    t.string   "content"
+    t.text     "content",    :limit => 255
     t.boolean  "visible"
     t.boolean  "is_link"
     t.datetime "created_at"
