@@ -1,0 +1,33 @@
+<h1>Edit <%= @user.login %> (<%= @user.real_name %>)</h1>
+
+<% form_for [:admin, @user], :url => {:controller => "admin/users", :action => :update} do |f| %>
+  <%= f.error_messages %>
+  
+      <%= f.label :login %><br />
+      <%= f.text_field :login %><br />
+      <br />
+      <%= f.label :password, f.object.new_record? ? nil : "Change password" %><br />
+      <%= f.password_field :password %><br />
+      <br />
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation %><br />
+      <br />
+      <%= f.label :email %><br />
+      <%= f.text_field :email %><br />
+      <br />
+      <%= f.label :real_name %><br />
+      <%= f.text_field :real_name %><br />
+      <br />
+      <%= f.label :phone_number %><br />
+      <%= f.text_field :phone_number %><br />
+      <br />
+      <%= f.label :is_not_allowed_to_login %><br />
+      <%= f.check_box :is_not_allowed_to_login %><br/>
+      <br />
+      <%= f.label :locked_reason %><br />
+      <%= f.text_field :locked_reason %><br />
+      <br />
+
+      <%= f.submit "Update" %>
+<% end %>
+

@@ -16,6 +16,7 @@ body{
 .users  {
   float: right;
 	display: block;
+	width: 485px;
 }
 .services {
 	float: right;

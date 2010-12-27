@@ -1,6 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
 
   map.resources :services
+    map.resources :base
 
   map.namespace "admin" do |admin|
     admin.root :controller => :site_prefs, :action => :index
@@ -8,6 +9,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :link_pages
     admin.resources :menu_bars
     admin.resources :services
+    admin.resources :users
   end
  
   # map.with_options(:conditions => {:subdomain => 'admin'}) do |subdom|

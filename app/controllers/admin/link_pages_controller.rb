@@ -1,4 +1,6 @@
-class Admin::LinkPagesController < ApplicationController
+class Admin::LinkPagesController < BaseController
+
+
   # GET /link_pages
   # GET /link_pages.xml
   def index

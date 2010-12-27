@@ -1,7 +1,5 @@
-class Admin::SitePrefsController < ApplicationController
+class Admin::SitePrefsController < BaseController
   
-    before_filter :authenticate
-
   
   def index
     @users = User.all
@@ -9,15 +7,6 @@ class Admin::SitePrefsController < ApplicationController
     @pages = LinkPage.all
     @menus = MenuBar.all
     
-  end
-  
-  
-  protected
-  
-  def authenticate
-    authenticate_or_request_with_http_basic do |username, password|
-      username == "admin" && password == "adm!np4$$"
-    end
   end
 
 end

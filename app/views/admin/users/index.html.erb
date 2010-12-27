@@ -1,0 +1,43 @@
+
+<div class="users">
+  <h2>Users</h2>
+  click on a user's login to edit them.
+  <table>
+    <tr>
+      <td>login</td>
+      <td>real name</td>
+      <td>email</td>
+      <td>phone number</td>
+      <td>address(es)</td>
+      <td>#logins</td>
+      <td>last login</td>
+      <td>last login IP</td>
+      <td>current IP</td>
+      <td>not allowed to login?</td>
+      <td>locked account reason?</td>
+      <td></td>
+    </tr>
+    <% @users.each do |u| %>
+      <tr>
+        <td><%= link_to u.login, edit_admin_user_path(u) %></td>
+        <td><%=u.real_name%></td>
+        <td><%=u.email%></td>
+        <td><%=u.phone_number%></td>
+        <td>
+          <% u.addresses.each do |a| %>
+            <%=h a.address_parts.join(", ") %> <br />
+          <% end %>
+        </td>
+        <td><%=u.login_count%></td>
+        <td><%=u.last_login_at%></td>
+        <td><%=u.last_login_ip%></td>
+        <td><%=u.current_login_ip%></td>
+        <td><%=u.is_not_allowed_to_login%></td>
+        <td><%=u.locked_reason%></td>
+        <td> <%= link_to "Remove / Delete", [u], :confirm => "Are you sure? It'll be gone forever.", :method => :delete %></td>
+      </tr>
+    <% end %>
+  </table>
+
+<%= link_to "Add User", new_user_path %>
+</div>

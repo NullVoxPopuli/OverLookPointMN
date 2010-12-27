@@ -1,4 +1,6 @@
-class Admin::MenuBarsController < ApplicationController
+class Admin::MenuBarsController < BaseController
+
+  
   # GET /menu_bars
   # GET /menu_bars.xml
   def index

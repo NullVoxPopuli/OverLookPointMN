@@ -1,6 +1,9 @@
 
 <div class="users">
-  Users
+  Users<br>
+  To edit a user, click their name (this includes, locking them from logging in, and marking if they have paid).
+  <br />
+  <%= link_to "View detailed list", admin_users_path %>
   <table>
     <tr>
       <td>login</td>
@@ -10,7 +13,7 @@
     </tr>
     <% @users.each do |u| %>
       <tr>
-        <td><%=u.login%></td>
+        <td><%= link_to u.login, edit_admin_user_path(u) %></td>
         <td><%=u.real_name%></td>
         <td><%=u.phone_number%></td>
         <td> <%= link_to "Remove / Delete", [u], :confirm => "Are you sure? It'll be gone forever.", :method => :delete %></td>
