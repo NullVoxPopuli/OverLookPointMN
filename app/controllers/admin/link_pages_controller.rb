@@ -43,7 +43,7 @@ class Admin::LinkPagesController < BaseController
   # POST /link_pages.xml
   def create
     @link_page = LinkPage.new(params[:link_page])
-
+    @link_page.sequence = LinkPage::NOT_USED
     respond_to do |format|
       if @link_page.save
         flash[:notice] = 'LinkPage was successfully created.'
