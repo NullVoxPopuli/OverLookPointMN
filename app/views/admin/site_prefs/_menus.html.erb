@@ -1,0 +1,25 @@
+
+
+
+
+<div class="menus">
+  These are what will display the pages (the menus). <br>You can only have one vertical, and one horizontal nav bar
+  <% @menus.each do |m| %>
+    <P>
+    <%= m.is_horizontal ? "This is your horizontal Nav bar" : "This is your vertical nav bar (for when people are already logged in)"%>
+    <% m.link_pages.sort_by { |e| e.sequence }.each do |item| %>
+      <div class="menu_item">
+        <%= item.name %> <br />
+      </div>
+    <% end %>
+    <div class="menu_empty"> 
+     <% if m.link_pages.size < 1 %>
+        <%= link_to("this bar currently has no pages", edit_admin_menu_bar_path(m)) %>
+      <% else %>
+        <%= link_to("edit this bar", edit_admin_menu_bar_path(m)) %>
+     <% end %>
+    </div>
+    </P>
+  <% end %>
+  <%= link_to "Add Menu", new_admin_menu_bar_path %>
+</div>

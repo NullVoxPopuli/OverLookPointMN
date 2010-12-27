@@ -1,7 +1,7 @@
 <div class="navigation_container">
   <ul class="navigation">
     <% if horizontal_menu_bar %>
-      <% horizontal_menu_bar.link_pages.each do |page| %>
+      <% horizontal_menu_bar.link_pages.sort_by { |e| e.sequence }.each do |page| %>
         <%= render :partial => "/shared_elements/menu_bar_item", :locals => {:page => page} %>
       <% end %>
     <% end %>

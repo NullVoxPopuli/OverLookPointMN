@@ -9,19 +9,32 @@ body{
 	border: 1px solid black;
 }
 
+.pages{
+  width: 600px;
+  float: left;
+}
 .users  {
-	float: left;
+  float: right;
+	display: block;
 }
 .services {
 	float: right;
-}
+	  width: 315px;
 
+}
+.menus{
+  float: left;
+}
   
 .pages, .menus{
   clear: both;
 }
 
-
+.admin_prefs{
+  float: left;
+  width: 1000px;  
+  clear: both;
+}
 .menu_item{
   padding-left: 20px;
 }

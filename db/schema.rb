@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101201185101) do
+ActiveRecord::Schema.define(:version => 20101226220906) do
 
   create_table "addresses", :force => true do |t|
     t.string  "number"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20101201185101) do
     t.boolean  "is_link"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "sequence"
   end
 
   create_table "link_pages_menu_bars", :id => false, :force => true do |t|

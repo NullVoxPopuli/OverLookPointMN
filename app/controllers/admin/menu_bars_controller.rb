@@ -35,7 +35,7 @@ class Admin::MenuBarsController < ApplicationController
   # GET /menu_bars/1/edit
   def edit
     @menu_bar = MenuBar.find(params[:id])
-    @link_pages = LinkPage.all
+    @link_pages = LinkPage.find(:all, :conditions => "sequence = #{LinkPage::NOT_USED}", :order => :sequence)
   end
 
   # POST /menu_bars
@@ -86,53 +86,40 @@ class Admin::MenuBarsController < ApplicationController
     @menu_bar = MenuBar.find(params[:id])
     @page = LinkPage.find(params[:page])
     
+    @page.sequence = @menu_bar.link_pages.size + 1
+    @page.save
+    
     @menu_bar.link_pages << @page
     
-    respond_to do |format|
-      if @menu_bar.save
-        @link_pages = LinkPage.all
-        format.html { render :action => "edit" }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @menu_bar.errors, :status => :unprocessable_entity }
-      end
+    if @menu_bar.save
+      redirect_to :controller => "admin/menu_bars", :action => "edit", :id => @menu_bar.id
+    else
+      flash[:notice] = "something bad happened when adding the page"
     end
   end
   
-  def move_page_down
-    @menu_bar = MenuBar.find(params[:id])
-    page = LinkPage.find(params[:page])
+  def sort_pages    
+    params[:page].each_with_index do |pageID, index|
+      page = LinkPage.find(pageID)
+      page.sequence = index
+      page.save
+    end
     
-    menu_link_relation = @menu_bar.link_pages(page)
-    
-    menu_link_relation.order = menu_link_relation.order + 1
-    
+    render :nothing => true
   end
-  
-  def move_page_up
-    @menu_bar = MenuBar.find(params[:id])
-    page = LinkPage.find(params[:page])
-    
-    menu_link_relation = @menu_bar.link_pages(page)
-    
-    menu_link_relation.order = menu_link_relation.order - 1
-    
-  end
-  
+
   def remove_page_from_menu
     @menu_bar = MenuBar.find(params[:id])
     page = LinkPage.find(params[:page])
     
+    page.sequence = LinkPage::NOT_USED
+    page.save
     @menu_bar.link_pages.delete(page)
     
-    respond_to do |format|
-      if @menu_bar.save
-        @link_pages = LinkPage.all
-        format.html { render :action => "edit" }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @menu_bar.errors, :status => :unprocessable_entity }
-      end
+    if @menu_bar.save
+      redirect_to :controller => "admin/menu_bars", :action => "edit", :id => @menu_bar.id
+    else
+      flash[:notice] = "something bad happened when removing the page"
     end
   end
 end

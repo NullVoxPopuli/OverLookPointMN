@@ -1,0 +1,21 @@
+<div class="pages">
+  Pages
+  <table>
+    <tr>
+      <td>name</td>
+      <td>content</td>
+      <td>isVisible?</td>
+      <td>isLink?</td>
+    </tr>
+    <% @pages.each do |p| %>
+      <tr>
+        <td><%=h link_to p.name, edit_admin_link_page_path(p.id) %> </td>
+        <td><%=h p.content.length > 300 ? "Content is too large to show" : p.content %> </td>
+        <td><%= p.visible %></td>
+        <td><%= p.is_link? %></td>
+      </tr>
+    <% end %>
+  </table>
+  
+  <%= link_to "Add page or link" , new_admin_link_page_path %>
+</div>

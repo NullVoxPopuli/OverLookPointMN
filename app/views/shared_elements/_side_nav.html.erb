@@ -1,7 +1,7 @@
 <% if current_user %>
   <ul class="side_nav">
     <% if vertical_menu_bar %>
-      <% vertical_menu_bar.link_pages.each do |page| %>
+      <% vertical_menu_bar.link_pages.sort_by { |e| e.sequence }.each do |page| %>
         <%= render :partial => "/shared_elements/menu_bar_item", :locals => {:page => page} %>
       <% end %>
     <% end %>

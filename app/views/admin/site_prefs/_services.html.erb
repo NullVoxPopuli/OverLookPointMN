@@ -1,0 +1,23 @@
+
+<div class="services">
+  Services
+  <table>
+    <tr>
+      <td>Name of Service</td>
+      <td></td>
+    </tr>
+    <% @services.each do |s| %>
+      <tr>
+        <td>
+          <%= s.name %> 
+        </td>
+        <td>
+                <%= link_to "Remove / Delete", [:admin, s], :confirm => "Are you sure? It'll be gone forever.", :method => :delete %>
+        </td>
+      </tr>
+      
+    <% end %>
+  </table>
+
+<%= link_to "Add Service", new_admin_service_path %>
+</div>

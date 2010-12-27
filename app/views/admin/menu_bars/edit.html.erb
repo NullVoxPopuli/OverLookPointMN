@@ -1,7 +1,18 @@
+
+  <script src="http://jqueryui.com/jquery-1.4.4.js"></script> 
+  <script src="http://jqueryui.com/ui/jquery.ui.core.js"></script> 
+  <script src="http://jqueryui.com/ui/jquery.ui.widget.js"></script> 
+  <script src="http://jqueryui.com/ui/jquery.ui.mouse.js"></script> 
+  <script src="http://jqueryui.com/ui/jquery.ui.sortable.js"></script> 
+  <style> 
+  #sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+  #sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.0em; height: 18px; }
+  #sortable li span { position: absolute; margin-left: -1.3em; }
+  </style>
 <script>
   $(function() {
-    $j( "#sortable" ).sortable();
-    $j( "#sortable" ).disableSelection();
+    $( "#sortable" ).sortable();
+    $( "#sortable" ).disableSelection();
   });
 </script>
 
@@ -31,7 +42,8 @@
 <table border=1>
   <tr>
     <td>Available pages:</td>
-    <td width=700>What is currently in this menu: 
+    <td width=700>What is currently in this menu: <br>      Click and drag to sort the pages
+
 </td>
   </tr>
     <td>
@@ -47,20 +59,11 @@
     </td>
     <td>
       <ol id="sortable">  
-          <% @menu_bar.link_pages.each do |lp| %>
-                <li class="ui-state-default">
+          <% @menu_bar.link_pages.sort_by { |e| e.sequence }.each do |lp| %>
+                <li id="page_<%= lp.id%>" class="ui-state-default">
                   <span class="ui-icon ui-icon-arrowthick-2-n-s"></span>
-                  <%= link_to "v", 
-                         :controller => "admin/menu_bars",
-                         :action => :move_page_down,
-                         :page => lp.id,
-                         :id => @menu_bar.id %>
-                  <%= link_to "^", 
-                         :controller => "admin/menu_bars",
-                         :action => :move_page_up,
-                         :page => lp.id,
-                         :id => @menu_bar.id %>
-                   | <%= lp.name %> | 
+
+                  <font size=5><%= lp.name %></font> | 
                   <%= link_to "remove",
                          :controller => "admin/menu_bars",
                          :action => :remove_page_from_menu,
@@ -79,5 +82,21 @@
 
 <br />
 
-<%= link_to 'Show', [:admin, @menu_bar] %> |
-<%= link_to 'Back', admin_menu_bars_path %>
+
+<script type="text/javascript">
+  $("#sortable").sortable({
+    axis: 'y',
+    zIndex: 1003,
+    cursor: 'crosshair',
+    update: function(){
+              $.ajax({
+                type: 'post',
+                data: $('#sortable').sortable('serialize'),
+                dataType: 'script',
+                complete: function(request){
+                  $('#sortable').effect('highlight');
+                  },
+                url: '/admin/menu_bars/sort_pages'})
+              }
+  });
+</script>

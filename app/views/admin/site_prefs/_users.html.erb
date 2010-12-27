@@ -1,0 +1,22 @@
+
+<div class="users">
+  Users
+  <table>
+    <tr>
+      <td>login</td>
+      <td>real name</td>
+      <td>phone number</td>
+      <td></td>
+    </tr>
+    <% @users.each do |u| %>
+      <tr>
+        <td><%=u.login%></td>
+        <td><%=u.real_name%></td>
+        <td><%=u.phone_number%></td>
+        <td> <%= link_to "Remove / Delete", [u], :confirm => "Are you sure? It'll be gone forever.", :method => :delete %></td>
+      </tr>
+    <% end %>
+  </table>
+
+<%= link_to "Add User", new_user_path %>
+</div>
