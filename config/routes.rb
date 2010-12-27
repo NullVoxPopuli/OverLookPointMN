@@ -1,7 +1,9 @@
 ActionController::Routing::Routes.draw do |map|
 
   map.resources :services
-    map.resources :base
+  map.resources :base
+  map.resources :errors
+
 
   map.namespace "admin" do |admin|
     admin.root :controller => :site_prefs, :action => :index

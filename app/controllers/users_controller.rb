@@ -4,6 +4,18 @@ class UsersController < ApplicationController
   
   def new
     @user = User.new
+    
+    ip_is_blocked = false
+    
+    blocked_people = User.find(:all, :conditions => ["is_not_allowed_to_login IS 't'"])
+    blocked_people.each do |bp|
+      
+      ip_is_blocked = (bp.last_login_ip == request.remote_ip || bp.current_login_ip == request.remote_ip)
+    end
+    
+    if ip_is_blocked
+      redirect_to(:controller => :errors, :action => :ip_blocked, :id => 0)
+    end
   end
   
   def create
