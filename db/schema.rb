@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101227100655) do
+ActiveRecord::Schema.define(:version => 20101227192235) do
 
   create_table "addresses", :force => true do |t|
     t.string  "number"
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(:version => 20101227100655) do
     t.string   "real_name"
     t.boolean  "is_not_allowed_to_login"
     t.string   "locked_reason"
+    t.boolean  "has_paid"
   end
 
 end

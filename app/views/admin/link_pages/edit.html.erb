@@ -19,7 +19,12 @@
     <%= f.label :is_link %><br />
     <%= f.check_box :is_link %>
   </p>
+    <p>
+    <%= f.label :sequence %> <br>Don't mess with this value unless the system doesn't allow this page to be added to a menu. (a value of -1 will tell the system that this page is not in a menu.)<br />
+    <%= f.text_field :sequence %>
+  </p>
   <p>
+    
     <%= f.submit 'Update' %>
   </p>
 <% end %>

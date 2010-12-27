@@ -228,3 +228,9 @@ body{
   }  
   
   
+.paid{
+  float: left;
+}
+.unpaid{
+  float: right;
+}
