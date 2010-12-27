@@ -2,7 +2,7 @@ class CreateLinkPages < ActiveRecord::Migration
   def self.up
     create_table :link_pages do |t|
       t.string :name
-      t.string :content
+      t.text :content
       t.boolean :visible
       t.boolean :is_link
 
