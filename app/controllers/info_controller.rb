@@ -13,8 +13,8 @@ class InfoController < ApplicationController
   end
   
   def real_estate_agents
-    @paid = User.find(:all, :conditions => "has_paid IS 't'")
-    @unpaid = User.find(:all, :conditions => "has_paid IS NOT 't'")
+    @paid = User.find(:all, :conditions => "has_paid = 't'")
+    @unpaid = User.find(:all, :conditions => "has_paid != 't'")
   end
   
   def search_paid_and_unpaid
