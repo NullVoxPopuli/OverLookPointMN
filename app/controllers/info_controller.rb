@@ -20,8 +20,8 @@ class InfoController < ApplicationController
   def search_paid_and_unpaid
     search = params[:search]
     conditions = "real_name LIKE '%#{search}%' OR login LIKE '%#{search}%' OR email LIKE '%#{search}%'"
-    @paid = User.find(:all, :conditions => "has_paid IS 't' AND (#{conditions})")
-    @unpaid = User.find(:all, :conditions => "has_paid IS NOT 't' AND (#{conditions})")
+    @paid = User.find(:all, :conditions => "has_paid = 't' AND (#{conditions})")
+    @unpaid = User.find(:all, :conditions => "has_paid != 't' AND (#{conditions})")
     
     respond_to do |format|
       format.js do
