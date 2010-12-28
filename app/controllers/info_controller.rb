@@ -16,4 +16,19 @@ class InfoController < ApplicationController
     @paid = User.find(:all, :conditions => "has_paid IS 't'")
     @unpaid = User.find(:all, :conditions => "has_paid IS NOT 't'")
   end
+  
+  def search_paid_and_unpaid
+    search = params[:search]
+    conditions = "real_name LIKE '%#{search}%' OR login LIKE '%#{search}%' OR email LIKE '%#{search}%'"
+    @paid = User.find(:all, :conditions => "has_paid IS 't' AND (#{conditions})")
+    @unpaid = User.find(:all, :conditions => "has_paid IS NOT 't' AND (#{conditions})")
+    
+    respond_to do |format|
+      format.js do
+        render :update do |p|
+          p.replace_html("real_estate_content", :partial => "/info/real_estate_search")
+        end
+      end
+    end
+  end
 end

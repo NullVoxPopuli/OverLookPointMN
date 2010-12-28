@@ -1,0 +1,38 @@
+<% if @paid.size < 1 and @unpaid.size < 1 %>
+ No people / houses were found with that search phrase
+<% else %>
+
+<div class="paid">
+  <u>Paid</u>
+  <% if @paid and @paid.size > 0 %>
+    <% @paid.each do |p| %>
+      <p>
+        <% p.addresses.each do |a| %>
+          <%=h a.address_parts.join(", ") %> <br />
+        <% end %>
+      </p>
+    <% end %> 
+  <% else %>
+    <p>
+    No one has paid
+    </p>
+  <% end %>
+</div>
+
+
+<div class="unpaid">
+  <u>Unpaid</u>
+  <% if @unpaid and @unpaid.size > 0 %>
+    <% @unpaid.each do |p| %>
+      <p>
+        <% p.addresses.each do |a| %>
+          <%=h a.address_parts.join(", ") %> <br />
+        <% end %>
+      </p>
+    <% end %> 
+    <% else %>
+    
+      <p>Everyone has paid</p>
+  <% end %>
+</div>
+<% end %>

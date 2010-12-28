@@ -1,23 +1,23 @@
-Who has paid and who hasn't?
-<div class="paid">
-  Paid
-  <% @paid.each do |p| %>
-    <p>
-      <% p.addresses.each do |a| %>
-        <%=h a.address_parts.join(", ") %> <br />
-      <% end %>
-    </p>
-  <% end %> 
+<div class="search_paidness">
+  
+  <% form_tag({:controller => :info,
+                :action => :search_paid_and_unpaid }) do |f| %>
+              Search: <%= text_field_tag 'paid_unpaid_search' %>
+        
+  <% end %>
+          
+          <%= observe_field :paid_unpaid_search,
+                :frequency=>0.5,
+                :update=>'',
+                :url=>{
+                  :controller => :info,
+                  :action=>'search_paid_and_unpaid',
+                  :only_path=>false},
+                :with=>"'search='+encodeURIComponent(value)" %>
 </div>
 
 
-<div class="unpaid">
-  Unpaid
-  <% @unpaid.each do |p| %>
-    <p>
-      <% p.addresses.each do |a| %>
-        <%=h a.address_parts.join(", ") %> <br />
-      <% end %>
-    </p>
-  <% end %> 
+<div id="real_estate_content">
+  <%= render :partial => "/info/real_estate_search" %>
 </div>
+

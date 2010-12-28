@@ -234,3 +234,14 @@ body{
 .unpaid{
   float: right;
 }
+
+
+.search_paidness{
+  display: block;
+  text-align: right;
+  clear: both;
+  padding-bottom: 10px;
+}
+.search_paidness form input{
+  font-size: 1.2em;
+}
