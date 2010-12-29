@@ -81,7 +81,9 @@ body{
 			height: 20px;
 			font-size: 18px;
 		}
-
+.user{
+  text-align: right;
+}
 .navigation_container {
 	clear: both;
 	display: block;
