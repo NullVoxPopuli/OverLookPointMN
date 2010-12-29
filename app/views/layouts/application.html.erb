@@ -31,7 +31,7 @@
 				
 				<% if current_user %>
   				<div class="find_a_service search">
-  					<% form_tag({:controller => :services,
+  					 <% form_tag({:controller => :services,
   					                     :action => :search }) do |f| %>
               <%= select_tag(:services, 
                        options_from_collection_for_select(Service.all, :id, :name))%>
