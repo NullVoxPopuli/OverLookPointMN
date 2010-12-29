@@ -34,6 +34,7 @@
   					 <% form_tag({:controller => :services,
   					                     :action => :search }) do |f| %>
               <%= select_tag(:services, 
+                        content_tag(:option, 'Select a service') +
                        options_from_collection_for_select(Service.all, :id, :name))%>
         
             <% end %>
