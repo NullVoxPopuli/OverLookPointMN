@@ -1,0 +1,78 @@
+ 
+  <script src="/javascripts/jquery-1.4.4.min.js"></script> 
+  <script src="/javascripts/jquery-ui-1.8.6.custom.min.js"></script> 
+  <style> 
+  #sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+  #sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.0em; height: 18px; }
+  #sortable li span { position: absolute; margin-left: -1.3em; }
+  </style>
+<script>
+  $(function() {
+    $( "#sortable" ).sortable();
+    $( "#sortable" ).disableSelection();
+  });
+</script>
+ 
+ 
+ <h2>Pick and sort what pages will be in this sub menu</h2>
+<table border=1>
+  <tr>
+    <td>Available pages:</td>
+    <td width=700>What is currently in this sub menu: <br>      Click and drag to sort the pages
+
+</td>
+  </tr>
+    <td>
+      <% if @link_pages %>
+        <% @link_pages.each do |page| %>
+            <%= page.name %> | <%= link_to "add", 
+                  :controller => "admin/link_pages", 
+                   :action => "add_page_to_sub_menu", 
+                   :id => @link_page.id,
+                   :page => page.id  %><br />
+        <% end %>
+      <% end %>
+    </td>
+    <td>
+      <ol id="sortable">  
+          <% @link_page.sub_pages.sort_by { |e| e.sequence }.each do |lp| %>
+                <li id="page_<%= lp.id%>" class="ui-state-default">
+                  <span class="ui-icon ui-icon-arrowthick-2-n-s"></span>
+
+                  <font size=5><%= lp.name %></font> | 
+                  <%= link_to "remove",
+                         :controller => "admin/link_pages",
+                         :action => :remove_page_from_sub_menu,
+                         :page => lp.id,
+                         :id => @link_page.id %>
+                </li>
+          <% end %>
+      </ol>
+ 
+
+    </td>
+  </tr>
+</table>
+
+<br />
+
+<br />
+
+
+<script type="text/javascript">
+  $("#sortable").sortable({
+    axis: 'y',
+    zIndex: 1003,
+    cursor: 'crosshair',
+    update: function(){
+              $.ajax({
+                type: 'post',
+                data: $('#sortable').sortable('serialize'),
+                dataType: 'script',
+                complete: function(request){
+                  $('#sortable').effect('highlight');
+                  },
+                url: '/admin/menu_bars/sort_pages'})
+              }
+  });
+</script>

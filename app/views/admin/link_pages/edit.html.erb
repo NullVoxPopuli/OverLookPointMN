@@ -1,4 +1,28 @@
+
+
+
 <h1>Editing link_page</h1>
+  <%= javascript_include_tag :defaults %>
+
+<% is_this_a_sub_menu = (@link_page.sub_pages and @link_page.sub_pages.count > 0)  %>
+
+<% if not is_this_a_sub_menu %>
+  <div id="convert_to_sub_menu_link">
+    If you want this page to be a submenu, just click the link below, and add the sub pages.<br>
+    <%= link_to_remote "Make this a sub menu", :url => {:controller => "admin/link_pages", 
+                      :action => "convert_to_sub_menu", :id => @link_page.id} %>
+  </div>
+<% else %>
+  <%= link_to "Convert back to regular page", :controller => "admin/link_pages",
+                    :action => "remove_sub_pages", :id => @link_page.id %>
+<% end %>
+
+<div id="sub_menu_editor_holder">
+  <% if is_this_a_sub_menu %>
+    <%= render :partial => "/admin/link_pages/sub_pages" %>
+  <% end %>
+</div>
+
 
 <% form_for([:admin,@link_page]) do |f| %>
   <%= f.error_messages %>
@@ -7,17 +31,21 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </p>
-  <p>
-    <%= f.label :content %><br />
-    <%= f.text_area :content %>
-  </p>
-  <p>
+    <% if not is_this_a_sub_menu %>
+      <div id="stuff_to_remove">
+          <p>
+            <%= f.label :content %><br />
+            <%= f.text_area :content %>
+          </p>
+          <p>
+            <%= f.label :is_link %><br />
+            <%= f.check_box :is_link %>
+          </p>
+       </div>
+    <% end %>
+    <p>
     <%= f.label :visible %><br />
     <%= f.check_box :visible %>
-  </p>
-  <p>
-    <%= f.label :is_link %><br />
-    <%= f.check_box :is_link %>
   </p>
     <p>
     <%= f.label :sequence %> <br>Don't mess with this value unless the system doesn't allow this page to be added to a menu. (a value of -1 will tell the system that this page is not in a menu.)<br />
@@ -31,3 +59,4 @@
 
 <%= link_to 'Show', [:admin, @link_page] %> |
 <%= link_to 'Back', admin_link_pages_path %>
+

@@ -1,17 +1,26 @@
 <% if page.visible? %>
-  <li>
-    <% if not page.is_link? %>
-    <%= link_to_remote page.name, 
-                  {
-                    :url => { 
-                             :controller => "admin/link_pages",
-                             :action => "load_page",
-                             :id => page.id
-                             }
-                  }
-                   %>
+  <li <%= "class='submenu'" if page.sub_pages.count > 0 %>>
+    <% if page.sub_pages.count > 0 %>
+      <%=h page.name %>
+      <ul>
+        <% page.sub_pages.each do |sp| %>
+          <%= render :partial => "/shared_elements/menu_bar_item", :locals => {:page => sp} %>
+        <% end %>
+      </ul>
     <% else %>
-      <a href="<%=h page.content %>"><%=h page.name %></a>
+      <% if not page.is_link? %>
+      <%= link_to_remote page.name, 
+                    {
+                      :url => { 
+                               :controller => "admin/link_pages",
+                               :action => "load_page",
+                               :id => page.id
+                               }
+                    }
+                     %>
+      <% else %>
+        <a href="<%=h page.content %>"><%=h page.name %></a>
+      <% end %>
     <% end %>
   </li>
 <% end %>

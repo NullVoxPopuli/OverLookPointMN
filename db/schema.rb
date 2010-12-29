@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101227192235) do
+ActiveRecord::Schema.define(:version => 20101229175900) do
 
   create_table "addresses", :force => true do |t|
     t.string  "number"
@@ -40,6 +40,11 @@ ActiveRecord::Schema.define(:version => 20101227192235) do
     t.boolean  "is_horizontal"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "parents_sub_pages", :id => false, :force => true do |t|
+    t.integer "parent_id"
+    t.integer "sub_page_id"
   end
 
   create_table "services", :force => true do |t|

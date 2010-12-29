@@ -245,3 +245,7 @@ body{
 .search_paidness form input{
   font-size: 1.2em;
 }
+
+
+li.submenu ul {display: none;} 
+  li.submenu:hover > ul {display: block;} 

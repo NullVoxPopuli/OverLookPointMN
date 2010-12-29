@@ -37,6 +37,8 @@ class Admin::LinkPagesController < BaseController
   # GET /link_pages/1/edit
   def edit
     @link_page = LinkPage.find(params[:id])
+        @link_pages = LinkPage.find(:all, :conditions => "sequence = #{LinkPage::NOT_USED}", :order => :sequence)
+
   end
 
   # POST /link_pages
@@ -96,4 +98,57 @@ class Admin::LinkPagesController < BaseController
       end
     end
   end
+  
+  def convert_to_sub_menu
+    @link_page = LinkPage.find(params[:id])
+    @link_pages = LinkPage.find(:all, :conditions => "sequence = #{LinkPage::NOT_USED}", :order => :sequence)
+    
+    respond_to do |format|
+      format.js do
+        render :update do |p|
+          p.replace_html("sub_menu_editor_holder", :partial => "/admin/link_pages/sub_pages")
+          p.replace_html("stuff_to_remove", "")
+          p.replace_html("convert_to_sub_menu_link", "")
+        end
+      end
+    end
+  end
+  
+  def remove_sub_pages
+   @link_page = LinkPage.find(params[:id])
+   # delete all sub_pages
+  end
+  
+  def remove_page_from_sub_menu
+    @link_page = LinkPage.find(params[:id])
+    page = LinkPage.find(params[:page])
+    
+    page.sequence = LinkPage::NOT_USED
+    page.save
+    @link_page.sub_pages.delete(page)
+    
+    if @link_page.save
+      redirect_to :controller => "admin/link_pages", :action => "edit", :id => @link_page.id
+    else
+      flash[:notice] = "something bad happened when removing the page"
+    end
+  end
+  
+  def add_page_to_sub_menu
+    @link_page = LinkPage.find(params[:id])
+    page = LinkPage.find(params[:page])
+    
+    page.sequence = @link_page.sub_pages.size + 1
+    page.save
+    
+    @link_page.sub_pages << page
+    
+    if @link_page.save
+      redirect_to :controller => "admin/link_pages", :action => "edit", :id => @link_page.id
+    else
+      flash[:notice] = "something bad happened when adding the page"
+    end
+  end
+  
+  
 end
