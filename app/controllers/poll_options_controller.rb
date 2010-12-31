@@ -41,6 +41,7 @@ class PollOptionsController < ApplicationController
   # POST /poll_options.xml
   def create
     @poll_option = PollOption.new(params[:poll_option])
+    @poll_option.votes = 0
 
     respond_to do |format|
       if @poll_option.save

@@ -94,7 +94,7 @@ class Admin::PollsController < ApplicationController
     poll.save
     
     respond_to do |format|
-        format.html { redirect_to([:admin, poll], :notice => 'Poll was successfully updated.') }
+        format.html { redirect_to(edit_admin_poll_path(poll), :notice => 'Poll was successfully updated.') }
         format.xml  { head :ok }
      
     end

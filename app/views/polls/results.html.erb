@@ -1,6 +1,6 @@
 Results for: <%= @poll.name %>
 <ol>
-  <% @poll.poll_options.sort_by { |e| e.votes }.each do |po| %>
+  <% @poll.poll_options.sort_by { |e| e.votes }.reverse.each do |po| %>
     <li>
         <%= po.address.address_parts.join(", ") %>
     </li>

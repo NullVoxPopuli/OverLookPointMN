@@ -8,17 +8,6 @@
   <%=h @poll.expiration %>
 </p>
 
-<p>
-  Options:<br />
-  <ul>
-    <% @poll.poll_options.each do |po| %>
-        <li>
-          <%= link_to "Delete", :controller => "admin/polls", :action => "remove_option", :id => po.id %>
-        <%= po.address.address_parts.join(", ") %>
-        </li>
-    <% end %>
-  </ul>
-</p>
 
 <%= link_to 'Edit', edit_admin_poll_path(@poll) %> |
 <%= link_to 'Back', admin_polls_path %>

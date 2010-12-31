@@ -1,4 +1,6 @@
 class PollsController < ApplicationController
+  before_filter :check_if_poll_is_expired
+  
   def show
     @poll = Poll.find(params[:id])
 
@@ -52,5 +54,14 @@ class PollsController < ApplicationController
   
   def results
     @poll = Poll.find(params[:id])
+  end
+  
+  def check_if_poll_is_expired
+    @poll = Poll.find(params[:id])
+    if @poll
+      if @poll.expiration < Date.today
+        redirect_to :controller => "errors", :action => "poll_expired"
+      end
+    end
   end
 end
