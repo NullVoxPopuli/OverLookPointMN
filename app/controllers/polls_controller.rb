@@ -30,7 +30,7 @@ class PollsController < ApplicationController
     
     if point_value == "1" # second vote, we are done
       flash[:notice] = "Thank you for voting!"
-      redirect_to :controller => "info", :action => "home"
+      redirect_to :action => :results, :id => params[:poll_id]
     elsif point_value == "2" # first vote, we need to vote for second place
       flash[:notice] = "1st place preference recorded"
       redirect_to :action => :vote_second, :id => params[:poll_id]

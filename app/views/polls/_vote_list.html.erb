@@ -1,4 +1,4 @@
-<% @poll.poll_options.each do |po| %>
+<% @poll.poll_options.sort_by { |e| e.address.number }.each do |po| %>
 <p>
   <%= link_to "Choose", :controller => "polls",
                         :action => "select_vote",
