@@ -1,0 +1,29 @@
+<h1>Add a new address for voting</h1>
+
+<% form_for @poll_option do |po_form| %>
+  <%= po_form.error_messages %>
+  
+  <%= po_form.hidden_field :poll_id, :value => @poll.id %>
+  
+  <% po_form.fields_for :address do |addr_form| %>
+      <%= addr_form.label :number %><br />
+      <%= addr_form.text_field :number %><br />
+      <br />
+      <%= addr_form.label :street %><br />
+      <%= addr_form.text_field :street %><br />
+      <br />
+      <%= addr_form.label :city %><br />
+      <%= addr_form.text_field :city %><br />
+      <br />
+      <%= addr_form.label :state %><br />
+      <%= addr_form.text_field :state %><br />
+      <br />
+      <%= addr_form.label :zip_code %><br />
+      <%= addr_form.text_field :zip_code %><br />
+      <br />
+      <br />
+      
+  <% end %>
+  
+  <%= submit_tag "Create address and vote for this one" %>
+<% end %>

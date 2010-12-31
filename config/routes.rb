@@ -1,4 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :poll_options
+
+  map.resources :polls
+
 
   map.resources :services
   map.resources :base
@@ -13,6 +17,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :menu_bars
     admin.resources :services
     admin.resources :users
+    admin.resources :polls
   end
  
   # map.with_options(:conditions => {:subdomain => 'admin'}) do |subdom|

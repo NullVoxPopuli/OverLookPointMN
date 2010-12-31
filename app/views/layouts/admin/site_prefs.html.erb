@@ -19,12 +19,13 @@
 </head>
 <body>
 	<div class="body_container">
+	     <%= "<p class=\"flash_notice\" style=\"color: green\">" + flash[:notice] + "</p>" if flash[:notice]%>
+
 <h1>OverLook Point MN Administration</h1>
 
 	       <%= yield %>
 
 
-		<%= "<p class=\"flash_notice\" style=\"color: green\">" + flash[:notice] + "</p>" if flash[:notice]%>
 
 
 	</div>

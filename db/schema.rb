@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101229175900) do
+ActiveRecord::Schema.define(:version => 20101230183349) do
 
   create_table "addresses", :force => true do |t|
     t.string  "number"
@@ -45,6 +45,21 @@ ActiveRecord::Schema.define(:version => 20101229175900) do
   create_table "parents_sub_pages", :id => false, :force => true do |t|
     t.integer "parent_id"
     t.integer "sub_page_id"
+  end
+
+  create_table "poll_options", :force => true do |t|
+    t.integer  "votes"
+    t.integer  "poll_id"
+    t.integer  "address_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "polls", :force => true do |t|
+    t.string   "name"
+    t.date     "expiration"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "services", :force => true do |t|

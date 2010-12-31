@@ -1,0 +1,5 @@
+<h2>Vote for first place</h2>
+<%= link_to "Vote for second place", :controller => "polls", :action => "vote_second" %>
+
+
+<%= render :partial => "/polls/vote_list", :locals => {:point_value => 2} %>

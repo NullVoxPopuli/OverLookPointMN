@@ -1,0 +1,20 @@
+<% @poll.poll_options.each do |po| %>
+<p>
+  <%= link_to "Choose", :controller => "polls",
+                        :action => "select_vote",
+                        :id => po.id,
+                        :poll_id => @poll.id,
+                        :point_value => point_value %>
+  <%= po.address.address_parts.join(", ") %>
+  
+</p>
+
+<% end %>
+
+Don't see the address you're looking for?<br />
+ <%= link_to "Add the Address here", :controller => "polls", 
+                                      :action => "new_address_to_poll",
+                                      :id => @poll.id %> 
+<!-- or <br /> <%= link_to "Add and vote for the address here", :controller => "polls",
+                                                   :action => "new_address_to_poll_and_vote",
+                                                   :id => @poll.id %> -->

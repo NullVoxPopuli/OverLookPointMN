@@ -33,4 +33,17 @@ class InfoController < ApplicationController
       end
     end
   end
+  
+  def help
+    @page = LinkPage.find_by_name("Help")
+    
+    respond_to do |format|
+      format.js do
+        render :update do |p|
+          p.replace_html("actual_content", :partial => "/shared_elements/local_page", :object => @page)
+        end
+      end
+    end
+    
+  end
 end

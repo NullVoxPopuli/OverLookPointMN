@@ -34,7 +34,7 @@
 
 <div class="services">
   <h2>Services you offer</h2>
-  <p>
+  
     <% if @services %>
       <% @services.each do |s| %>
         <div class="service_name">
@@ -42,12 +42,12 @@
         </div>
         <div class="service_description">
           <%=h s.description %>
-        </div>
-      
+        </div>      
       <% end %>
+      <br /> <Br />
     <% end %>
-    <br /> <Br />
     <% if (Service.all - @user.services).size > 0 %>
+
       <% form_tag({:controller => :users,
                        :action => :add_service_to_user,
                        :user_id => @user.id }) do |f| %>
@@ -57,6 +57,6 @@
       <% end %>
     <% end %>
 
-  </p>
+  
   
 </div>

@@ -1,0 +1,9 @@
+Results for: <%= @poll.name %>
+<ol>
+  <% @poll.poll_options.each do |po| %>
+    <li>
+        <%= po.address.address_parts.join(", ") %>
+    </li>
+  <% end %>
+</ol>
+  
