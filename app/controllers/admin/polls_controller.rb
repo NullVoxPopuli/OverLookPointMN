@@ -80,4 +80,23 @@ class Admin::PollsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  def remove_option
+    poll_option = PollOption.find(params[:id])
+    
+    poll = poll_option.poll
+    
+    poll.poll_options.delete(poll_option)
+    
+    poll_option.address.destroy
+    poll_option.destroy
+    
+    poll.save
+    
+    respond_to do |format|
+        format.html { redirect_to([:admin, poll], :notice => 'Poll was successfully updated.') }
+        format.xml  { head :ok }
+     
+    end
+  end
 end
