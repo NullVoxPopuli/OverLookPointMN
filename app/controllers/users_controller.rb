@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     
     ip_is_blocked = false
     
-    blocked_people = User.find(:all, :conditions => ["is_not_allowed_to_login IS 't'"])
+    blocked_people = User.find(:all, :conditions => ["is_not_allowed_to_login = 't'"])
     blocked_people.each do |bp|
       
       ip_is_blocked = (bp.last_login_ip == request.remote_ip || bp.current_login_ip == request.remote_ip)
