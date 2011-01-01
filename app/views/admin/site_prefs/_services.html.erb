@@ -1,6 +1,7 @@
 
 <div class="services">
-  Services
+  Services<br>
+  To edit a service, click on its name.
   <table>
     <tr>
       <td>Name of Service</td>
@@ -9,7 +10,7 @@
     <% @services.each do |s| %>
       <tr>
         <td>
-          <%= s.name %> 
+          <%= link_to s.name, edit_admin_services_path(s) %> 
         </td>
         <td>
                 <%= link_to "Remove / Delete", [:admin, s], :confirm => "Are you sure? It'll be gone forever.", :method => :delete %>
