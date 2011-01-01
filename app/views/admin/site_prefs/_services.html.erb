@@ -10,7 +10,7 @@
     <% @services.each do |s| %>
       <tr>
         <td>
-          <%= link_to s.name, edit_admin_services_path(s) %> 
+          <%= link_to s.name, :controller => "admin/services", :action => "edit", :id => s.id %> 
         </td>
         <td>
                 <%= link_to "Remove / Delete", [:admin, s], :confirm => "Are you sure? It'll be gone forever.", :method => :delete %>
