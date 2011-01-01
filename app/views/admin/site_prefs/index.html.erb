@@ -1,4 +1,7 @@
 <div class="admin_prefs" >
+<p>
+  <%= link_to "Change Administration password", :controller => "admin/dictionaries", :action => "change_password", :id => 0 %>
+</p>
 <%= link_to "Creat and edit polls", :controller => "admin/polls", :action => "index" %>
 <%= render :partial => '/admin/site_prefs/pages' %>
 <%= render :partial => '/admin/site_prefs/services' %>

@@ -1,4 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
+
   map.resources :poll_options
 
   map.resources :polls
@@ -7,6 +8,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :services
   map.resources :base
   map.connect '/errors/:action', :controller => "errors" 
+  map.connect 'dictionaries/:action', :controller => "dictionaries"
   map.resources :errors
 
 
@@ -17,7 +19,10 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :menu_bars
     admin.resources :services
     admin.resources :users
+    #admin.connect 'dictionaries/:action', :controller => "dictionaries"
     admin.resources :polls
+    admin.resources :dictionaries
+
   end
  
   # map.with_options(:conditions => {:subdomain => 'admin'}) do |subdom|

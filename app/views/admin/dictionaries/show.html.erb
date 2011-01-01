@@ -1,0 +1,13 @@
+<p>
+  <b>Key:</b>
+  <%=h @dictionary.key %>
+</p>
+
+<p>
+  <b>Value:</b>
+  <%=h @dictionary.value %>
+</p>
+
+
+<%= link_to 'Edit', edit_dictionary_path(@dictionary) %> |
+<%= link_to 'Back', dictionaries_path %>
