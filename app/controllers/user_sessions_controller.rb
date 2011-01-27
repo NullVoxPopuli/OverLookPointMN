@@ -8,7 +8,7 @@ class UserSessionsController < ApplicationController
   
   def create
     user  = User.find_by_login(params[:user_session][:login])
-    if user.is_not_allowed_to_login?
+    if user and user.is_not_allowed_to_login?
       flash[:notice] = "You are not allowed to login in. Reason: #{user.locked_reason}"
       redirect_back_or_default root_path
     else
