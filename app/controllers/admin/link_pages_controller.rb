@@ -1,4 +1,4 @@
-class Admin::LinkPagesController < Admin::BaseController
+class Admin::LinkPagesController < ApplicationController
 
 
   # GET /link_pages
