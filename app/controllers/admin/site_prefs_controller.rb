@@ -1,4 +1,4 @@
-class Admin::SitePrefsController < BaseController
+class Admin::SitePrefsController < Admin::BaseController
   
   
   def index

@@ -6,7 +6,6 @@ ActionController::Routing::Routes.draw do |map|
 
 
   map.resources :services
-  map.resources :base
   map.connect '/errors/:action', :controller => "errors" 
   map.connect 'dictionaries/:action', :controller => "dictionaries"
   map.resources :errors
@@ -14,6 +13,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.namespace "admin" do |admin|
     admin.root :controller => :site_prefs, :action => :index
+    admin.resources :base
     admin.resources :site_prefs
     admin.resources :link_pages
     admin.resources :menu_bars

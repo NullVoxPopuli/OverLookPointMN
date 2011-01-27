@@ -1,4 +1,4 @@
-class Admin::MenuBarsController < BaseController
+class Admin::MenuBarsController < Admin::BaseController
 
   
   # GET /menu_bars

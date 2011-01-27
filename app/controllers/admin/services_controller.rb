@@ -1,4 +1,4 @@
-class Admin::ServicesController < BaseController
+class Admin::ServicesController < Admin::BaseController
 
   
   # GET /services

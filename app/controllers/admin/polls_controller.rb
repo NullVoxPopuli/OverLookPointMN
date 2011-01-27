@@ -1,4 +1,4 @@
-class Admin::PollsController < ApplicationController
+class Admin::PollsController < Admin::ApplicationController
   # GET /polls
   # GET /polls.xml
   def index
