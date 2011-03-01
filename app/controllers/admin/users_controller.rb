@@ -22,4 +22,16 @@ class Admin::UsersController < Admin::BaseController
       render :action => :edit
     end
   end
+  
+  
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+
+    respond_to do |format|
+      format.html { redirect_to(:controller => :site_prefs, :action => :index) }
+      format.xml  { head :ok }
+    end
+  end
+  
 end

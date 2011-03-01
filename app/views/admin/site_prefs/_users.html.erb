@@ -16,7 +16,7 @@
         <td><%= link_to u.login, edit_admin_user_path(u) %></td>
         <td><%=u.real_name%></td>
         <td><%=u.phone_number%></td>
-        <td> <%= link_to "Remove / Delete", [u], :confirm => "Are you sure? It'll be gone forever.", :method => :delete %></td>
+        <td> <%= link_to "Remove / Delete", [:admin, u], :confirm => "Are you sure? It'll be gone forever.", :method => :delete %></td>
       </tr>
     <% end %>
   </table>
