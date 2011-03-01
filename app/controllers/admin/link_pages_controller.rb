@@ -23,6 +23,10 @@ class Admin::LinkPagesController < ApplicationController
     end
   end
 
+  def home
+    @page = LinkPage.find_by_name("Home")
+  end
+
   # GET /link_pages/new
   # GET /link_pages/new.xml
   def new

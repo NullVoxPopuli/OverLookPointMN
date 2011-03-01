@@ -1,6 +1,6 @@
 class InfoController < ApplicationController
   def home
-    
+    @page = LinkPage.find_by_name("Home")
   end
   
   def calendar
