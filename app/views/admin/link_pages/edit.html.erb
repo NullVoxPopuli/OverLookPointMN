@@ -1,4 +1,4 @@
-
+<%= javascript_include_tag :ckeditor %>
 
 
 <h1>Editing link_page</h1>
@@ -35,7 +35,7 @@
       <div id="stuff_to_remove">
           <p>
             <%= f.label :content %><br />
-            <%= f.text_area :content %>
+            <%= f.cktext_area :content, :width=>"600px", :height=>"200px" %>
           </p>
           <p>
             <%= f.label :is_link %><br />
