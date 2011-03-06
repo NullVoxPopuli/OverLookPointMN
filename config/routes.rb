@@ -14,7 +14,6 @@ ActionController::Routing::Routes.draw do |map|
   map.namespace "admin" do |admin|
     admin.root :controller => :site_prefs, :action => :index
     
-    admin.connect '/menu_bars/:action', :controller => "menu_bars"
     admin.resources :menu_bars
     
     

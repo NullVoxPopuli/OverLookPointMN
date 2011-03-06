@@ -19,20 +19,21 @@
   }
 
 </style>
-<h1>Editing menu_bar</h1>
+<h1>Editing <%= @menu_bar.is_horizontal ? "Horizontal (public) menu bar" : "Vertical (members only) menu bar"%></h1>
 
+<!--
 <% form_for([:admin, @menu_bar]) do |f| %>
   <%= f.error_messages %>
-
   <p>
     <%= f.label :is_horizontal %><br />
     <%= f.check_box :is_horizontal %>
   </p>
-  
+
     <p>
     <%= f.submit 'Update' %>
   </p>
 <% end %>
+-->
 
  
  <h2>Pick and sort what pages will be in this menu bar</h2>
