@@ -1,5 +1,5 @@
-<h1>New link_page</h1>
-If you want to create a sub menu, just create the sub menu here, save, and then go edit this page and add the sub pages there.
+<h1>New <%= @link_page.is_link ? "Link" : "Page" %></h1>
+If you want to create a sub menu, just create the menu item here, save, and then go edit this page and add the sub pages there.
 <% form_for([:admin, @link_page]) do |f| %>
   <%= f.error_messages %>
 
@@ -15,10 +15,7 @@ If you want to create a sub menu, just create the sub menu here, save, and then 
     <%= f.label :visible %><br />
     <%= f.check_box :visible %>
   </p>
-  <p>
-    <%= f.label :is_link %><br />
-    <%= f.check_box :is_link %>
-  </p>
+    <%= f.hidden_field :is_link, :value => @link_page.is_link %>
   <p>
     <%= f.submit 'Create' %>
   </p>

@@ -1,6 +1,26 @@
 class Admin::LinkPagesController < ApplicationController
 
 
+  def new_link
+    @link_page = LinkPage.new
+    @link_page.is_link = true
+    
+    respond_to do |format|
+      format.html { render :file => "/admin/link_pages/new"}
+      format.xml  { render :xml => @link_page }
+    end
+  end
+
+  def new_page
+    @link_page = LinkPage.new
+    @link_page.is_link = false
+    
+    respond_to do |format|
+      format.html { render :file => "/admin/link_pages/new"}
+      format.xml  { render :xml => @link_page }
+    end
+  end
+
   # GET /link_pages
   # GET /link_pages.xml
   def index
@@ -141,7 +161,7 @@ class Admin::LinkPagesController < ApplicationController
   def add_page_to_sub_menu
     @link_page = LinkPage.find(params[:id])
     page = LinkPage.find(params[:page])
-    if @link_page.id = page.id
+    if @link_page.id == page.id
       flash[:notice] = "you may not add a sub menu to itself (the universe breaks if that happens)"
     else
       page.sequence = @link_page.sub_pages.size + 1

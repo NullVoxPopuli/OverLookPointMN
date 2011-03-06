@@ -1,12 +1,12 @@
 <h1>Listing Menu Bar Items</h1>
 
-<% link_to( {:controller => :link_pages, :action => :new_page}, :class => "action_link" ) do %>
+<% link_to( {:controller => :link_pages, :action => :new_page, :id => "create"}, :class => "action_link" ) do %>
 	<span class="action_box right">
 		Create Page
 	</span>
 <% end %>
 
-<% link_to( {:controller => :link_pages, :action => :new_link}, :class => "action_link" ) do %>
+<% link_to( {:controller => :link_pages, :action => :new_link, :id => "create"}, :class => "action_link" ) do %>
 	<span class="action_box right">
 		Create Link
 	</span>
@@ -17,12 +17,14 @@
   <tr>
     <th>Name</th>
     <th>Visible</th>
+	<th>Link / Page</th>
   </tr>
 
 <% @link_pages.each do |link_page| %>
   <tr>
     <td><%=h link_page.name %></td>
     <td><%=h link_page.visible %></td>
+	<td><%=h (link_page.sub_pages.empty? ? (link_page.is_link ? "Link" : "Page") : "Sub Menu") %>
     <td><%= link_to 'Show', admin_link_page_path(link_page.id) %></td>
     <td><%= link_to 'Edit', edit_admin_link_page_path(link_page) %></td>
     <td><%= link_to 'Destroy', admin_link_page_path(link_page.id), :confirm => 'Are you sure?', :method => :delete %></td>
@@ -31,5 +33,3 @@
 </table>
 
 <br />
-
-<%= link_to 'New link_page', new_admin_link_page_path %>
