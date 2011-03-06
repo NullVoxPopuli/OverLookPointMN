@@ -8,5 +8,6 @@ class Admin::SitePrefsController < Admin::BaseController
     @menus = MenuBar.all
     
   end
+  
 
 end

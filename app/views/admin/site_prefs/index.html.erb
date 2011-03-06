@@ -1,10 +1,40 @@
-<div class="admin_prefs" >
-<p>
-  <%= link_to "Change Administration password", :controller => "admin/dictionaries", :action => "change_password", :id => 0 %>
-</p>
-<%= link_to "Creat and edit polls", :controller => "admin/polls", :action => "index" %>
-<%= render :partial => '/admin/site_prefs/pages' %>
-<%= render :partial => '/admin/site_prefs/services' %>
-<%= render :partial => '/admin/site_prefs/menus' %>
-<%= render :partial => '/admin/site_prefs/users' %>
+<div class="admin_prefs" >	
+
+	<h2>
+		What would you like to do?
+	</h2>
+	<% link_to({ :controller => :link_pages, :action => :index}, :class=>"action_link")  do %>
+	<span class="action_box left">
+		Manage Menu Bar Items
+	</span>
+	<%end%>
+	<% link_to({ :controller => :menu_bars, :action => :select}, :class=>"action_link")  do %>
+		<span class="action_box right">
+			Manage Menu Bars
+		</span>
+	<% end %>
+
+
+	<% link_to({ :controller => "admin/services", :action => :index}, :class=>"action_link")  do %>
+		<span class="action_box left">
+			Manage Services
+		</span>
+	<% end %>
+	<% link_to({:controller => "admin/users", :action => :index}, :class=>"action_link")  do %>
+		<span class="action_box right">
+			Manage Users
+		</span>
+	<%end%>
+
+
+	<% link_to({ :controller => "admin/polls", :action => :index}, :class=>"action_link")  do %>
+		<span class="action_box left">
+			Manage Polls
+		</span>
+	<% end %>
+
+
+	<p style="clear: both;">
+	  <%= link_to "Change Administration password", :controller => "admin/dictionaries", :action => "change_password", :id => 0 %>
+	</p>
 </div>

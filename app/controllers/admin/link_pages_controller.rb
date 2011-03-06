@@ -141,16 +141,19 @@ class Admin::LinkPagesController < ApplicationController
   def add_page_to_sub_menu
     @link_page = LinkPage.find(params[:id])
     page = LinkPage.find(params[:page])
-    
-    page.sequence = @link_page.sub_pages.size + 1
-    page.save
-    
-    @link_page.sub_pages << page
-    
-    if @link_page.save
-      redirect_to :controller => "admin/link_pages", :action => "edit", :id => @link_page.id
+    if @link_page.id = page.id
+      flash[:notice] = "you may not add a sub menu to itself (the universe breaks if that happens)"
     else
-      flash[:notice] = "something bad happened when adding the page"
+      page.sequence = @link_page.sub_pages.size + 1
+      page.save
+    
+      @link_page.sub_pages << page
+    
+      if @link_page.save
+        redirect_to :controller => "admin/link_pages", :action => "edit", :id => @link_page.id
+      else
+        flash[:notice] = "something bad happened when adding the page"
+      end
     end
   end
   

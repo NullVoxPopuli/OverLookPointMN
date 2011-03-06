@@ -1,5 +1,9 @@
 class Admin::MenuBarsController < Admin::BaseController
 
+  def select
+    @horizontal_bar = MenuBar.find(:first, :conditions => "is_horizontal = 1")
+    @vertical_bar = MenuBar.find(:first, :conditions => "is_horizontal = 0")
+  end
   
   # GET /menu_bars
   # GET /menu_bars.xml

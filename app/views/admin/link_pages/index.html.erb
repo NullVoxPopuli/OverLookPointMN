@@ -1,16 +1,27 @@
-<h1>Listing link_pages</h1>
+<h1>Listing Menu Bar Items</h1>
+
+<% link_to( {:controller => :link_pages, :action => :new_page}, :class => "action_link" ) do %>
+	<span class="action_box right">
+		Create Page
+	</span>
+<% end %>
+
+<% link_to( {:controller => :link_pages, :action => :new_link}, :class => "action_link" ) do %>
+	<span class="action_box right">
+		Create Link
+	</span>
+<% end %>
+
 
 <table>
   <tr>
     <th>Name</th>
-    <th>Content</th>
     <th>Visible</th>
   </tr>
 
 <% @link_pages.each do |link_page| %>
   <tr>
     <td><%=h link_page.name %></td>
-    <td><%=h link_page.content %></td>
     <td><%=h link_page.visible %></td>
     <td><%= link_to 'Show', admin_link_page_path(link_page.id) %></td>
     <td><%= link_to 'Edit', edit_admin_link_page_path(link_page) %></td>

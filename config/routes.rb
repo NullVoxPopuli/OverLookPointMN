@@ -13,15 +13,20 @@ ActionController::Routing::Routes.draw do |map|
 
   map.namespace "admin" do |admin|
     admin.root :controller => :site_prefs, :action => :index
+    
+    admin.connect '/menu_bars/:action', :controller => "menu_bars"
+    admin.resources :menu_bars
+    
+    
     admin.resources :base
     admin.resources :site_prefs
     admin.resources :link_pages
-    admin.resources :menu_bars
     admin.resources :services
     admin.resources :users
     #admin.connect 'dictionaries/:action', :controller => "dictionaries"
     admin.resources :polls
     admin.resources :dictionaries
+    
 
   end
  

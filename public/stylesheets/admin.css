@@ -2,6 +2,11 @@ body{
 	width: 1000px;
 	margin-left: auto;
 	margin-right: auto;
+	font-family: verdana, arial, helvetica, sans-serif;
+  
+}
+a{
+	color: black;
 }
 .users, .services, .pages, .menus {
 	margin: 10px;
@@ -50,3 +55,30 @@ body{
 #sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px; }
 #sortable li span { position: absolute; margin-left: -1.3em; }
   
+
+.action_box {
+	border: 1px solid black;
+	padding: 20px;
+	width: 415px;
+	height: 80px;
+	line-height: 80px;
+	margin: 20px;
+	text-align: center;
+	font-size: 26px;
+}
+
+a.action_link{
+	text-decoration: none;
+	
+}
+
+.action_box:hover{
+	background: #e1e1e1;
+}
+
+.left{
+	float: left;
+}
+.right{
+	float: right;
+}
