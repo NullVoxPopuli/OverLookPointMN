@@ -1,0 +1,13 @@
+<% link_to( {:controller => :menu_bars, :action => :edit, :id => @horizontal_bar.id}, :class => "action_link" ) do %>
+	<span class="action_box right">
+		Edit the Horizontal Menu Bar (visible to public)
+	</span>
+<% end %>
+
+<% link_to( {:controller => :menu_bars, :action => :edit, :id => @vertical_bar.id}, :class => "action_link" ) do %>
+	<span class="action_box right">
+		Edit the Vertical Menu Bar (visible to members only)
+	</span>
+<% end %>
+
+<br><br><br><br><br><br><br><br><br>
