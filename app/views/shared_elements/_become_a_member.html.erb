@@ -1,0 +1,24 @@
+<style>
+.access_code_field{
+	font-size: 20px;
+	width: 300px;
+}
+</style>
+
+You must become a member to access this portion of the site. 
+<br>
+<br>
+Please enter your security code in the box below.
+
+<% form_tag :controller => "/users", :action => :validate_access do %>
+  
+      <%= text_field_tag :access_code, nil, :class=>"access_code_field" %><br />
+	  <%= hidden_field_tag :user, @user.id %>
+
+      <%= submit_tag "Authenticate" %>
+<% end %>
+
+
+<br><br>
+
+If you do not have a security code, please contact the owner of the site.

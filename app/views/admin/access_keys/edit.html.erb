@@ -1,0 +1,24 @@
+<h1>Edit Access Key</h1>
+
+<% form_for([:admin, @access_key]) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :user %><br />
+    <%= f.select :user, (User.all, :label => false) %>
+  </p>
+  <p>
+    <%= f.label :access_code %><br />
+    <%= f.text_field :access_code %>
+  </p>
+  <p>
+	<%= f.label :expiration %><br />
+	<%= f.date_select :expiration %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', [:admin, @access_key] %> |
+<%= link_to 'Back', admin_access_keys_path %>
