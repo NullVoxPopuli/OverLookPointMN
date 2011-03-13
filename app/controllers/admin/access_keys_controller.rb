@@ -64,7 +64,7 @@ class Admin::AccessKeysController < Admin::BaseController
     respond_to do |format|
       if @access_key.update_attributes(params[:access_key])
         flash[:notice] = 'access_key was successfully updated.'
-        format.html { redirect_to(@access_key) }
+        format.html { redirect_to([:admin, @access_key]) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

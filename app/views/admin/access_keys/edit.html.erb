@@ -5,7 +5,7 @@
 
   <p>
     <%= f.label :user %><br />
-    <%= f.select :user, (User.all, :label => false) %>
+    <%= f.select :user_id, User.all.map{|u| [u.real_name + " (#{u.login})", u.id]}, :label => false %>
   </p>
   <p>
     <%= f.label :access_code %><br />
@@ -16,7 +16,7 @@
 	<%= f.date_select :expiration %>
   </p>
   <p>
-    <%= f.submit 'Create' %>
+    <%= f.submit 'Change' %>
   </p>
 <% end %>
 
