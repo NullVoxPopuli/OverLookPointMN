@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   
   def create
     @user = User.new(params[:user])
-    @user.membership = USER::NOT_MEMBER
+    @user.membership = User::NOT_MEMBER
     if @user.save
       flash[:notice] = "Account registered!"
       redirect_back_or_default account_url
