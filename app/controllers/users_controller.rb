@@ -51,6 +51,16 @@ class UsersController < ApplicationController
     end
   end
   
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+
+    respond_to do |format|
+      format.html { redirect_to(:controller => "admin/site_prefs", :action => :index) }
+      format.xml  { head :ok }
+    end
+  end
+  
   def add_service_to_user
     @user = User.find(params[:user_id])
     @user.services << Service.find(params[:services])
