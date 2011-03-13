@@ -15,7 +15,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.root :controller => :site_prefs, :action => :index
     
     admin.resources :menu_bars
-    
+    admin.resources :access_keys
     
     admin.resources :base
     admin.resources :site_prefs
@@ -46,6 +46,7 @@ ActionController::Routing::Routes.draw do |map|
   
   
   map.resource :user_session
+  map.resource :get_access, :controller => "users", :action => "get_access"
   map.resource :account, :controller => "users"
   map.resources :password_resets
   map.resources :users

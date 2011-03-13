@@ -113,11 +113,15 @@ class Admin::LinkPagesController < ApplicationController
   
   def load_page
     @page = LinkPage.find(params[:id])
-    
     respond_to do |format|
       format.js do
         render :update do |p|
-          p.replace_html("actual_content", :partial => "/shared_elements/local_page", :object => @page)
+          if (current_user.membership == User::NOT_MEMBER) 
+            @user = current_user
+            p.replace_html("actual_content", :partial => "/shared_elements/become_a_member", :object => @user)
+          else
+            p.replace_html("actual_content", :partial => "/shared_elements/local_page", :object => @page)
+          end
         end
       end
     end

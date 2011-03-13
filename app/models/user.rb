@@ -11,6 +11,18 @@ class User < ActiveRecord::Base
   MEMBER_BASIC = 0
   MEMBER_ADMIN = 1
   
+  def membership_name
+    if self.membership == NOT_MEMBER
+      "Not a member"
+    elsif self.membership == MEMBER_BASIC
+      "Basic member"
+    elsif self.membership == MEMBER_ADMIN
+      "Admin"
+    else
+      "Invalid membership"
+    end
+  end
+  
   def deliver_password_reset_instructions!  
     reset_perishable_token!  
     Notifier.deliver_password_reset_instructions(self)  

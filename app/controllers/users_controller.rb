@@ -20,6 +20,7 @@ class UsersController < ApplicationController
   
   def create
     @user = User.new(params[:user])
+    @user.membership = USER::NOT_MEMBER
     if @user.save
       flash[:notice] = "Account registered!"
       redirect_back_or_default account_url
@@ -59,5 +60,26 @@ class UsersController < ApplicationController
       flash[:notice] = "Service failed to be added"
     end
     redirect_to account_url
+  end
+  
+  def get_access
+    @user = User.find(params[:user_id])
+  end
+    
+  def validate_access
+    code = AccessKey.find_by_access_code(params[:access_code])
+    user = User.find(params[:user])
+    if user
+     if code and code.expiration > Date.today
+        user.membership = User::MEMBER_BASIC
+        user.save
+        @message = "Congratulations, you are now a 
+                        basic member and have access to the entire site!"
+      else
+        @message =  "Authentication failed, or your code has expired."
+      end
+    else
+      @message = "Authentication failed"
+    end
   end
 end

@@ -27,8 +27,13 @@
 	<%end%>
 
 
-	<% link_to({ :controller => "admin/polls", :action => :index}, :class=>"action_link")  do %>
+	<% link_to({ :controller => "admin/access_keys", :action => :index}, :class=>"action_link")  do %>
 		<span class="action_box left">
+			Manage Access Keys
+		</span>
+	<% end %>
+	<% link_to({ :controller => "admin/polls", :action => :index}, :class=>"action_link")  do %>
+		<span class="action_box right">
 			Manage Polls
 		</span>
 	<% end %>

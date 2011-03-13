@@ -17,6 +17,9 @@
       <br />
       <%= f.label :real_name %><br />
       <%= f.text_field :real_name %><br />
+	  <br />
+	  <%= f.label :membership %><br />
+	  <%= f.select :membership, [["Not a Member", -1], ["Basic Member", 0]]%>
       <br />
       <%= f.label :phone_number %><br />
       <%= f.text_field :phone_number %><br />

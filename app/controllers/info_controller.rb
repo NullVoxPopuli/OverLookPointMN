@@ -13,8 +13,13 @@ class InfoController < ApplicationController
   end
   
   def real_estate_agents
-    @paid = User.find(:all, :conditions => "has_paid = 't'")
-    @unpaid = User.find(:all, :conditions => "has_paid != 't'")
+
+    if (current_user.membership == User::NOT_MEMBER) 
+      redirect_to :controller => :users, :action => :get_access, :id => 0, :user_id => current_user.id
+    else  
+      @paid = User.find(:all, :conditions => "has_paid = 't'")
+      @unpaid = User.find(:all, :conditions => "has_paid != 't'")
+    end            
   end
   
   def search_paid_and_unpaid
