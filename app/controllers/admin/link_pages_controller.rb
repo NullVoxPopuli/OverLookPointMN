@@ -116,7 +116,7 @@ class Admin::LinkPagesController < ApplicationController
     respond_to do |format|
       format.js do
         render :update do |p|
-          if (current_user.membership == User::NOT_MEMBER) 
+          if (current_user and current_user.membership == User::NOT_MEMBER) 
             @user = current_user
             p.replace_html("actual_content", :partial => "/shared_elements/become_a_member", :object => @user)
           else
