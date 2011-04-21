@@ -251,3 +251,36 @@ body{
 
 li.submenu ul {display: none;} 
   li.submenu:hover > ul {display: block;} 
+
+
+
+
+/*
+	Post stuff
+*/
+.post_container{
+	margin-right: 10px;
+}
+.post_message{
+	padding: 20px;
+	margin-bottom: 20px;
+	background-color: #222;
+	display: block;
+}
+.post_message .post_options {
+	float: right;
+}
+.post_message .title{
+	text-align: left;
+	border-bottom: 1px dotted white;
+}
+
+.post_message .author {
+	text-align: right;
+}
+
+.new_post_link {
+	text-align: right;
+	margin-right: 10px;
+	margin-bottom: 20px;
+}
