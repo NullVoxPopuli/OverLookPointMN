@@ -1,0 +1,30 @@
+<div class="new_post_link">
+	<%= link_to 'New post', new_post_path %>
+</div>
+
+
+<% if @posts %>
+	<% @posts.each do |post| %>
+
+		<div class="post_container">
+			<div class="post_message">
+				<% if post.user_id == current_user.id %>
+					<div class="post_options">
+						<%= link_to 'Edit', edit_post_path(post) %> | 
+						<%= link_to 'Delete', post, :confirm => 'Are you sure?', :method => :delete %>
+					</div>
+				<% end %>
+				<div class="title">
+					<%= post.title %>
+				</div>	
+				<div class="message">
+					<%= post.content %>
+				</div>
+				<div class="author">
+					<% @user = User.find(post.user_id) %>
+					Author: <%= @user.login %>  
+				</div>
+			</div>
+		</div>
+	<% end %>
+<% end %>

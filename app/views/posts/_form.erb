@@ -1,0 +1,12 @@
+<%= javascript_include_tag :defaults %>
+
+<%= javascript_include_tag :ckeditor %>
+
+
+<%= form.label :title %><br />
+<%= form.text_field :title %><br />
+<br />
+<%= form.label :content %><br />
+<%= form.cktext_area :content, :width=>"600px", :height=>"200px" %>
+<br />
+<%= form.hidden_field :user_id, :value => current_user.id %>
