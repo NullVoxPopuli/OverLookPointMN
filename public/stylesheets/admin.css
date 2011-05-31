@@ -58,13 +58,13 @@ a{
 
 .action_box {
 	border: 1px solid black;
-	padding: 20px;
-	width: 415px;
-	height: 80px;
-	line-height: 80px;
+	padding: 15px;
+	width: 428px;
+	height: 60px;
+	line-height: 60px;
 	margin: 20px;
 	text-align: center;
-	font-size: 26px;
+	font-size: 18px;
 }
 
 a.action_link{

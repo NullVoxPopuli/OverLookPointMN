@@ -1,0 +1,167 @@
+html{
+    overflow-y: scroll;
+    min-width:1002px;  
+ 	background:#002347 url(../images/bg-body-c.jpg) repeat-x;
+}
+
+body {
+	margin: 0;
+	color: #4578AA;
+	font: 11px/13px Verdana, Arial, Helvetica, sans-serif;
+	background: url(../images/bg-body.jpg) no-repeat 50% 0;
+}
+
+img{
+    border-style:none;
+    vertical-align:top;
+}
+a{
+    text-decoration:none;
+    color: #DEC300;
+}
+hr {
+    border: 1px solid #1F4C79;
+}
+a:hover{
+	text-decoration:underline;
+	border: none;
+}
+a:visited{
+	color: #DEC300;
+}
+input,
+textarea,
+select{
+    font:100% Arial, Helvetica, sans-serif;
+    vertical-align:middle;
+}
+form,
+fieldset{
+    margin:0;
+    padding:0;
+    border-style:none;
+}
+
+/*
+ above: stuff from www.hcinternational.net's css sheet
+ below: custom stuff to make overlook look like hcinternational
+*/
+
+.navigation_background {
+	height: 30px;
+	width: 100%;
+	border-bottom: 1px solid #697C37;
+}
+
+.navigation_container {
+	background-image: -webkit-gradient(
+	    linear,
+	    left bottom,
+	    left top,
+	    color-stop(0.0, rgb(0,30,62)),
+	    color-stop(0.9, rgb(1,45,87))
+	);
+	background-image: -moz-linear-gradient(
+	    center bottom,
+	    rgb(0,30,62) 39%,
+	    rgb(1,45,87) 70%);
+	height: 30px;
+}
+
+.navigation_menu_container {
+	z-index: 0;
+	position: relative;
+	top: -31px;
+	
+	height: 36px;
+	display: table;
+	
+
+}
+.navigation,
+.navigation li {
+	padding-top: 0px;
+	padding-bottom: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	
+}
+.navigation li {
+	background-image: -webkit-gradient(
+	    linear,
+	    left bottom,
+	    left top,
+	    color-stop(0.0, rgb(0,30,62)),
+	    color-stop(0.9, rgb(1,45,87))
+	);
+	background-image: -moz-linear-gradient(
+	    center bottom,
+	    rgb(0,30,62) 39%,
+	    rgb(1,45,87) 70%);
+	
+	
+	z-index: 1;
+	position: relative;
+	line-height: 36px;
+	height: 36px;
+	padding-left: 20px;
+	padding-right: 20px;
+	display: table-cell;
+	vertical-align: middle;
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	-webkit-box-shadow: 0 2px 0px rgba(0,0,0,.2);
+	-moz-box-shadow: 0 2px 0px rgba(0,0,0,.2);
+	box-shadow: 0 2px 0px rgba(0,0,0,.2);
+	
+	border-bottom: 1px solid #697C37;
+	
+}
+.navigation li a {
+	color: #8DA9C7;
+	
+	line-height: 36px;
+	font: 13px Verdana, Arial, Helvetica, sans-serif;
+}
+
+	.navigation li a:hover {
+		color: #DEC300;
+		text-decoration: none;
+	}
+	.navigation li:hover{
+		background-image: -webkit-gradient(
+		    linear,
+		    left bottom,
+		    left top,
+		    color-stop(0.0, rgb(0,30,62)),
+		    color-stop(0.9, rgb(1,45,87))
+		);
+		background-image: -moz-linear-gradient(
+		    center bottom,
+		    rgb(0,30,62) 39%,
+		    rgb(1,45,87) 70%);
+			
+		border-bottom: 1px solid #697C37;	
+	}
+	
+	.navigation li a:hover{
+  		border: none;
+	}
+	
+	li .tab_activated {
+		height: 36px;
+		line-height: 36px;
+		margin-top: -8px;
+		background: #e1e1e1;
+		border-bottom: none;
+		
+	}
+
+/*
+	END NAV
+	BEGIN CONTENT
+*/
+
+.content {
+	top: 170px;
+}
