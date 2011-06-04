@@ -1,14 +1,14 @@
 html{
     overflow-y: scroll;
     min-width:1002px;  
- 	background:#002347 url(../images/bg-body-c.jpg) repeat-x;
+ 	background:#002347 url(../images/bg-body-c.jpeg) repeat-x;
 }
 
 body {
 	margin: 0;
 	color: #4578AA;
 	font: 11px/13px Verdana, Arial, Helvetica, sans-serif;
-	background: url(../images/bg-body.jpg) no-repeat 50% 0;
+	background: url(../images/bg-body.jpeg) no-repeat 50% 0;
 }
 
 img{
