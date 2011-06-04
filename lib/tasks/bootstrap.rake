@@ -7,14 +7,16 @@ namespace :db do
     
     puts "Loading Data..."
     if MenuBar.count == 0
-      Menus = [
-               {"is_horizontal" => "t"}, 
-               {"is_horizontal" => "f"}
-              ].collect do |menu|
-                MenuBar.create(menu)
-              end
+      menus = [
+        {"is_horizontal" => "t"}, 
+        {"is_horizontal" => "f"}
+      ].collect do |menu|
+        MenuBar.create(menu)
+      end
     end
     
-    
+    puts "All done, you can use the program now... yay!"
+  end
+end
       
       
