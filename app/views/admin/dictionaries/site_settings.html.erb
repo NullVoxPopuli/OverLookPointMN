@@ -1,0 +1,53 @@
+<h1>Site Settings</h1>
+<br>
+<div class="password_change">
+	<h3>Change Password</h3>
+
+	<% form_for([:admin, @pass], :url=>{:action => :update}) do |f| %>
+	  <%= f.error_messages %>
+	<%= f.label "Change password" %><br />
+	<%= f.password_field :value %><br />
+	<%= f.hidden_field :key, :value => @pass.key %>
+	<%= f.hidden_field :id, :value => @pass.id%>
+	
+	  </p>
+	  <p>
+	    <%= f.submit 'Set Password' %>
+	  </p>
+	<% end %>
+</br>
+</div>
+
+<div class="site_title">
+	<h3>Site Title (Currently: <%=h @site_title.value? ?  @site_title.value : "<not set>"%>)</h3>
+
+	<% form_for([:admin, @site_title], :url=>{:action => :update}) do |f| %>
+	  <%= f.error_messages %>
+	<%= f.label "Change The Site's Title" %><br />
+	<%= f.text_field :value %><br />
+	<%= f.hidden_field :key, :value => @site_title.key %>
+	<%= f.hidden_field :id, :value => @site_title.id%>
+	  </p>
+	  <p>
+	    <%= f.submit 'Set Site Title' %>
+	  </p>
+	<% end %>
+</br>
+</div>
+
+<div class="tag_line">
+	<h3>Tag Line (Currently: <%=h @tag_line.value? ?  @tag_line.value : "<not set>"%>)</h3>
+
+	<% form_for([:admin, @tag_line], :url=>{:action => :update}) do |f| %>
+	  <%= f.error_messages %>
+	<%= f.label "Change the Site's Tag Line" %><br />
+	<%= f.text_field :value %><br />
+	<%= f.hidden_field :key, :value => @tag_line.key %>
+	<%= f.hidden_field :id, :value => @tag_line.id %>
+	  </p>
+	  <p>
+	    <%= f.submit 'Set Tag Line' %>
+	  </p>
+	<% end %>
+</br>
+</div>
