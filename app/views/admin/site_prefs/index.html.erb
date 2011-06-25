@@ -38,7 +38,11 @@
 		</span>
 	<% end %>
 
-
+	<% link_to({ :controller => "admin/dictionaries", :action => :site_settings}, :class => "action_link ") do %>
+		<span class="action_box left">
+			Site Settings
+		</span>
+	<% end %>
 	<p style="clear: both;">
 	  <%= link_to "Change Administration password", :controller => "admin/dictionaries", :action => "change_password", :id => 0 %>
 	</p>

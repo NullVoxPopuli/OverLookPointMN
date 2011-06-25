@@ -15,7 +15,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.namespace "admin" do |admin|
     admin.root :controller => :site_prefs, :action => :index
-    
+    admin.connect '/dictionaries/:action', :controller => "dictionaries"
     admin.resources :menu_bars
     admin.resources :access_keys
     

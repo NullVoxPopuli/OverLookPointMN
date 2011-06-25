@@ -41,25 +41,20 @@ class Admin::DictionariesController < ApplicationController
   # POST /admin_dictionaries.xml
   def create
     @dictionary = Dictionary.new(params[:dictionary])
-
-    if not params[:dictionary][:key]
-      @dictionary.key = "@dm!n" #password reset
-    end
-
-      @dictionary.save!
-      redirect_to(:controller => "admin/site_prefs", :action => :index)
+    
+    @old = Dictionary.find(:all, :conditions => ["key = ?", @dictionary.key])
+    if @old then @old.destroy end
+    
+    @dictionary.save!
+    redirect_to(:controller => "admin/site_prefs", :action => :index)
         
   end
 
   # PUT /admin_dictionaries/1
   # PUT /admin_dictionaries/1.xml
   def update
-    @dictionary = Dictionary.find(params[:id])
-
-    if not params[:dictionary][:key]
-      @dictionory.key = "@dm!n" #password reset
-    end
-
+    @dictionary = Dictionary.find(params[:dictionary][:id])
+      
      @dictionary.update_attributes(params[:dictionary])
      
      redirect_to(:controller => "admin/site_prefs", :action => :index)
@@ -79,11 +74,36 @@ class Admin::DictionariesController < ApplicationController
   end
   
   def change_password
-    pass = Dictionary.find_by_key("@dm!n")
+    pass = Dictionary.find_by_key(Dictionary::ADMIN_KEY)
     if pass
       @dictionary = pass
     else 
-      @dictionary = Dictionary.new      
+      @dictionary = Dictionary.new
+      @dictionary.key = Dictionary::ADMIN_KEY      
     end
+  end
+  
+  def site_settings
+    @pass = Dictionary.find_by_key(Dictionary::ADMIN_KEY)
+    if !@pass
+      @pass = Dictionary.new
+      @pass.key = Dictionary::ADMIN_KEY      
+    end
+    
+    @site_title = Dictionary.find_by_key(Dictionary::SITE_TITLE_KEY)
+    if !@site_title
+      @site_title = Dictionary.new
+      @site_title.key = Dictionary::SITE_TITLE_KEY
+    end
+    
+    @tag_line = Dictionary.find_by_key(Dictionary::TAG_LINE_KEY)
+    if !@tag_line
+      @tag_line = Dictionary.new
+      @tag_line.key = Dictionary::TAG_LINE_KEY
+    end
+    
+    @pass.save!
+    @tag_line.save!
+    @site_title.save!
   end
 end

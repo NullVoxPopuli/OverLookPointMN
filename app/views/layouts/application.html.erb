@@ -28,8 +28,10 @@
 	
 	<div class="body_container">
 		<div class="header">
-			<h1 class="site_title">Site Title</h1>
-			<h3 class="site_tag_line">Tag Line</h3>
+			<% site_title %>
+			<% tag_line %>
+			<h1 class="site_title"><%=h @site_title ? @site_title : "Site Title" %></h1>
+			<h3 class="site_tag_line"><%=h @tag_line ? @tag_line : "Tag Line" %></h3>
 			
 			<div class="user_status_container">
 				<%= render :partial => "shared_elements/login_register"%>
