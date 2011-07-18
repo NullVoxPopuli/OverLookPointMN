@@ -1,9 +1,9 @@
 <div class="navigation_container">
-	<div class="navigation_background">
+	<!-- <div class="navigation_background">
 	
-	</div>
+	</div> -->
 	<div class="navigation_menu_container">
-	  <ul class="navigation">
+	  <ul class="navigation" id="menu">
 	    <% if horizontal_menu_bar %>
 	      <% horizontal_menu_bar.link_pages.sort_by { |e| e.sequence }.each do |page| %>
 	        <%= render :partial => "/shared_elements/menu_bar_item", :locals => {:page => page} %>

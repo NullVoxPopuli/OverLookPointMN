@@ -1,7 +1,7 @@
 <% if page.visible? %>
   <li <%= "class='submenu'" if page.sub_pages.count > 0 %>>
     <% if page.sub_pages.count > 0 %>
-      <%=h page.name %>
+      <a href="#"><%=h page.name %></a>
       <ul>
         <% page.sub_pages.each do |sp| %>
           <%= render :partial => "/shared_elements/menu_bar_item", :locals => {:page => sp} %>

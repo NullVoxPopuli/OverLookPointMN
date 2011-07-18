@@ -116,14 +116,14 @@ class Admin::LinkPagesController < ApplicationController
     respond_to do |format|
       format.js do
         render :update do |p|
-          if current_user.nil?
-            p.replace_html("actual_content", "you must login to view this page.")
-          elsif (current_user and current_user.membership == User::NOT_MEMBER)
-            @user = current_user
-            p.replace_html("actual_content", :partial => "/shared_elements/become_a_member", :object => @user)
-          else
+          # if current_user.nil?
+            # p.replace_html("actual_content", "you must login to view this page.")
+          # elsif (current_user and current_user.membership == User::NOT_MEMBER)
+            # @user = current_user
+            # p.replace_html("actual_content", :partial => "/shared_elements/become_a_member", :object => @user)
+          # else
             p.replace_html("actual_content", :partial => "/shared_elements/local_page", :object => @page)
-          end
+          # end
         end
       end
     end
