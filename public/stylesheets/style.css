@@ -7,7 +7,6 @@ a, a:visited {
 }
 
 a:active, a:hover {
-  border-bottom: 1px dotted #999;
 }
 
 h2{
@@ -18,7 +17,7 @@ body{
 	padding: 0px !important;
 	color: white;
 	font-size: 18px;
-	  background: url(../images/header_bg.png) repeat-x #000011;
+	  background: url(../images/header_bg.png) repeat-x #001;
 
 }
 .body_container {
@@ -384,6 +383,7 @@ http://www.red-team-design.com/css3-dropdown-menu
     background: linear-gradient(#444, #111);
     -moz-border-radius: 5px;
     border-radius: 5px;
+	box-shadow: 0 0 5px rgba(255,255,255,0.5);
 }
 
 #menu ul li

@@ -4,6 +4,8 @@ class Admin::LinkPagesController < ApplicationController
   def new_link
     @link_page = LinkPage.new
     @link_page.is_link = true
+    @link_page.visible = true
+    
     
     respond_to do |format|
       format.html { render :file => "/admin/link_pages/new"}
@@ -14,6 +16,7 @@ class Admin::LinkPagesController < ApplicationController
   def new_page
     @link_page = LinkPage.new
     @link_page.is_link = false
+    @link_page.visible = true
     
     respond_to do |format|
       format.html { render :file => "/admin/link_pages/new"}
