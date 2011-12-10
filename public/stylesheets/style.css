@@ -20,6 +20,11 @@ body{
 	  background: url(../images/header_bg.png) repeat-x #001;
 
 }
+.user_status_container a{
+	color: white;
+	text-shadow: 1px 2px black;
+}
+
 .body_container {
 	width: 950px;
 	margin-right: auto;
