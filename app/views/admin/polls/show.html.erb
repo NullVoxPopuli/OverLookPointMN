@@ -8,6 +8,9 @@
   <%=h @poll.expiration %>
 </p>
 
+NOTE<br>
+THE URL THAT YOU WILL USE TO GET TO THIS POLL: <%= link_to "http://[Site Domain]/polls/#{@poll.id }", :controller => "/polls", :action => :show, :id => @poll.id %><br>
+be sure to add it to the menu bar in a "link"-menubar item<br><br>
 
 <%= link_to 'Edit', edit_admin_poll_path(@poll) %> |
 <%= link_to 'Back', admin_polls_path %>

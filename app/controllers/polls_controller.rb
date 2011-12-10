@@ -2,12 +2,7 @@ class PollsController < ApplicationController
   before_filter :check_if_poll_is_expired
   
   def show
-    @poll = Poll.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @poll }
-    end
+    redirect_to :controller => :polls, :action => :vote_first, :id => params[:id]
   end
   
   def add_new_option_to_poll

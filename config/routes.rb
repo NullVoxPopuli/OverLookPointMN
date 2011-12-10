@@ -6,7 +6,6 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :polls
 
-
   map.resources :services
   map.connect '/errors/:action', :controller => "errors" 
   map.connect 'dictionaries/:action', :controller => "dictionaries"
